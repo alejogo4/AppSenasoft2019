@@ -29,8 +29,8 @@ class Home extends Component {
   render() {
     return (
       <Container style={styles.container}>
-          <Header style={{ backgroundColor: "#207CA0" }}
-                  androidStatusBarColor="#2691B2"
+              <Header style={{ backgroundColor: "#207CA0" }}
+                  androidStatusBarColor="#1B687F"
                   iosBarStyle="light-content">
               <Body>
               <Title>Senasoft 2019</Title>

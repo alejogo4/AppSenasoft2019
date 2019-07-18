@@ -46,18 +46,21 @@ export default {
         height:150,
         borderRadius: 100,
         marginLeft: deviceWidth / 4,
-        marginTop:30,
-
+        marginTop:20,
+        marginBottom:20,
     },
     secondColor:{
-        backgroundColor: "#2691B2",
+        backgroundColor: "#1B687F",
     },
     contentForm:{
-      paddingLeft:20,
-      paddingRight:20,
+      paddingLeft:15,
+      paddingRight:15,
     },
     inputColor:{
       color:"#FFFFFF",
+    },
+    itemForm:{
+      marginTop:10,
     },
     buttonLogin:{
         margin: 15, marginTop: 50,backgroundColor: "#207CA0"
