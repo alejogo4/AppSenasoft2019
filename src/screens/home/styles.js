@@ -1,6 +1,7 @@
 const React = require("react-native");
 const { Dimensions, Platform } = React;
 const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 export default {
   imageContainer: {
@@ -40,12 +41,25 @@ export default {
     primaryColor:{
         backgroundColor: "#207CA0",
     },
-    foto:{
-        width:100,
-        flex:1,
-        alignItems:'center'
+    photo_log:{
+        width:150,
+        height:150,
+        borderRadius: 100,
+        marginLeft: deviceWidth / 4,
+        marginTop:30,
+
     },
     secondColor:{
         backgroundColor: "#2691B2",
+    },
+    contentForm:{
+      paddingLeft:20,
+      paddingRight:20,
+    },
+    inputColor:{
+      color:"#FFFFFF",
+    },
+    buttonLogin:{
+        margin: 15, marginTop: 50,backgroundColor: "#207CA0"
     }
 };

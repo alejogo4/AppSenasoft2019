@@ -7,7 +7,8 @@ import {
     Content,
     H1,
     Text,
-    Body, Button, Icon, Left, Thumbnail
+    Body, Button, Icon, Left, Thumbnail,
+    Right, Form, Item, Input
 } from "native-base";
 
 import styles from "./../home/styles";
@@ -30,11 +31,31 @@ export default class Login extends Component{
                         <Body>
                         <Title>Login</Title>
                         </Body>
+                        <Right/>
                     </Header>
 
                     <Content padder>
-                        <Thumbnail large source={img_login}  style={styles.foto} />
+                        <Thumbnail style={styles.photo_log} source={img_login} />
                     </Content>
+                    <Content style={styles.contentForm}>
+                        <Form>
+                            <Item>
+                                <Input style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
+                            </Item>
+                            <Item>
+                                <Input style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
+                            </Item>
+                        </Form>
+                        <Button
+                            block
+                            style={styles.buttonLogin}
+                        >
+                            <Icon active name="person" />
+                            <Text>Iniciar Sesión</Text>
+                        </Button>
+                    </Content>
+
+
                 </ImageBackground>
 
             </Container>

@@ -6,9 +6,9 @@ export default class TabFooter extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            tab1: false,
+            tab1: true,
             tab2: false,
-            tab3: true
+            tab3: false
         };
     }
     toggleTab1() {
