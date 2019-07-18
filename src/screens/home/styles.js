@@ -24,5 +24,28 @@ export default {
     color: "#D8D8D8",
     bottom: 6,
     marginTop: 5
-  }
+  },
+
+    container: {
+        backgroundColor: "#FFF"
+    },
+
+    mb: {
+        marginTop:5,
+        marginBottom: 5
+    },
+    mt: {
+        marginTop:20,
+    },
+    primaryColor:{
+        backgroundColor: "#207CA0",
+    },
+    foto:{
+        width:100,
+        flex:1,
+        alignItems:'center'
+    },
+    secondColor:{
+        backgroundColor: "#2691B2",
+    }
 };

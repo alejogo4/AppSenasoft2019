@@ -137,6 +137,10 @@ import NHToast from "./screens/toast/";
 import Actionsheet from "./screens/actionsheet";
 import NHAccordion from "./screens/accordion/";
 import NHDatePicker from "./screens/datepicker/";
+import Login from "./screens/login";
+//Importaciones propias
+
+
 
 const Drawer = createDrawerNavigator(
   {
@@ -302,7 +306,8 @@ const AppNavigator = createStackNavigator(
     AccordionIcon: { screen: AccordionIcon },
     AccordionIconStyle: { screen: AccordionIconStyle },
     AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
-    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent }
+    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent },
+    Login:{screen:Login}
   },
   {
     initialRouteName: "Drawer",
