@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ImageBackground} from 'react-native';
+import {ImageBackground} from  'react-native';
 import {
     Container,
     Header,
@@ -11,11 +11,16 @@ import {
     Right, Form, Item, Input
 } from "native-base";
 
+
+import {connect} from 'react-redux';
+import {validarLogin} from '../../redux/actions/login';
+
+
 import styles from "./../home/styles";
 const bg_login = require("../../../assets/bg_login.png");
 const img_login = require("../../../assets/contacts/himanshu.png");
 
-export default class Login extends Component{
+class Login extends Component{
     render() {
         return (
             <Container style={styles.container}>
@@ -57,8 +62,24 @@ export default class Login extends Component{
                     </Content>
 
                 </ImageBackground>
-
             </Container>
         );
     }
 }
+
+const mapStateProps = state =>{
+    return{
+        datosLogin: state.respuesta
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        validarLogin: (datosUsuario)=>{
+            return dispatch(validarLogin(datosUsuario))
+        }
+    }
+}
+
+export default connect(mapStateProps,mapDispatchToProps)(Login);
+
