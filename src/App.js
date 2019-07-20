@@ -1,5 +1,8 @@
 import React from "react";
 import { Root } from "native-base";
+
+import NavigationService from './services/NavigationService';
+
 // import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { createDrawerNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 
@@ -319,5 +322,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default () =>
   <Root>
-    <AppContainer />
+    <AppContainer ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }} />
   </Root>;

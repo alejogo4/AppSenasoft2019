@@ -1,8 +1,14 @@
-const URL = 'https://senasoft.fabricadesoftware.co/api/login';
+const URL = 'https://senasoft.fabricadesoftware.co/api';
 
+export const sendLogin = (data) => {
+    let request = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
 
-export const sendLogin = ()=>{
-    return fetch(URL)
-        .then(response=>response.json())
-        .then(data => data);
+    return fetch(`${URL}/login`, request)
+        .then(response => response.json());
 }

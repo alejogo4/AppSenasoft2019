@@ -1,6 +1,6 @@
 import {RESPUESTA_LOGIN} from "../actions/login";
 
-export const LoginReducer =  (state ={}, action)=>{
+export const LoginReducer = (state = {}, action) => {
     switch (action.type) {
         case RESPUESTA_LOGIN:
             return{
@@ -10,7 +10,5 @@ export const LoginReducer =  (state ={}, action)=>{
             break;
         default :
             return state;
-            break;
-
     }
 }

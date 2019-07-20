@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ImageBackground} from  'react-native';
+import {ImageBackground, toyse, TouchableOpacity} from  'react-native';
 import {
     Container,
     Header,
@@ -11,16 +11,28 @@ import {
     Right, Form, Item, Input
 } from "native-base";
 
-
-import {connect} from 'react-redux';
-import {validarLogin} from '../../redux/actions/login';
-
+import { connect } from 'react-redux';
+import { validarLogin } from '../../redux/actions/login';
 
 import styles from "./../home/styles";
 const bg_login = require("../../../assets/bg_login.png");
 const img_login = require("../../../assets/contacts/himanshu.png");
 
-class Login extends Component{
+class Login extends Component {
+
+    constructor(){
+        super();
+
+        this.state = {
+            email : null,
+            password : null
+        };
+    }
+
+    guardar(){
+        this.props.validarUsuario(this.state);
+    }
+
     render() {
         return (
             <Container style={styles.container}>
@@ -44,17 +56,18 @@ class Login extends Component{
                         <Form style={styles.contentForm}>
                             <Item rounded style={styles.itemForm}>
                                 <Icon active name="mail" style={{ color: "white" }} />
-                                <Input returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
+                                <Input onChangeText={(email) => this.setState({email})} returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
                             </Item>
                             <Item rounded style={styles.itemForm}>
                                 <Icon active name="key" style={{ color: "white" }} />
-                                <Input style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
+                                <Input onChangeText={(password) => this.setState({password})} style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
                             </Item>
                         </Form>
                         <Button
                             block
                             rounded
                             style={styles.buttonLogin}
+                            onPress={()=>{this.guardar()}}
                         >
                             <Icon active name="person" />
                             <Text>Iniciar Sesión</Text>
@@ -74,12 +87,12 @@ const mapStateProps = state =>{
 }
 
 const mapDispatchToProps = dispatch =>{
-    return{
-        validarLogin: (datosUsuario)=>{
+    return {
+        validarUsuario : datosUsuario => {
             return dispatch(validarLogin(datosUsuario))
         }
     }
 }
 
-export default connect(mapStateProps,mapDispatchToProps)(Login);
+export default connect(mapStateProps, mapDispatchToProps)(Login);
 
