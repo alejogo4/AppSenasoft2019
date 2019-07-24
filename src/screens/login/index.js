@@ -12,7 +12,7 @@ import {
 } from "native-base";
 
 import { connect } from 'react-redux';
-import { validarLogin } from '../../redux/actions/login';
+import { validarLogin, token } from '../../redux/actions/login';
 
 import styles from "./../home/styles";
 const bg_login = require("../../../assets/bg_login.png");
@@ -28,6 +28,23 @@ class Login extends Component {
             password : null
         };
     }
+
+    componentDidMount(){
+        this._bootstrapAsync();
+
+    }
+
+    _bootstrapAsync = () => {
+
+        this.props.retornarToken().then(() => {
+            if  (this.props.token.token !== null){
+                this.props.navigation.navigate('Home');
+            }
+        })
+        .catch(error => {
+            this.setState({ error })
+        })
+    };
 
     guardar(){
         this.props.validarUsuario(this.state);
@@ -82,7 +99,8 @@ class Login extends Component {
 
 const mapStateProps = state =>{
     return{
-        datosLogin: state.respuesta
+        datosLogin: state.respuesta,
+        token: state.token
     }
 }
 
@@ -90,6 +108,9 @@ const mapDispatchToProps = dispatch =>{
     return {
         validarUsuario : datosUsuario => {
             return dispatch(validarLogin(datosUsuario))
+        },
+        retornarToken : () => {
+            return dispatch(token());
         }
     }
 }
