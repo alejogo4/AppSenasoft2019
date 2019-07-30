@@ -21,7 +21,7 @@ export const token = (token) => ({
     token,
 });
 
-export const token = (user) => ({
+export const user = (user) => ({
     type: GET_USER,
     user,
 });
@@ -96,8 +96,11 @@ export const removerToken = () => dispatch => {
 }
 
 export const validarLogin = data => dispatch => {
+
     sendLogin(data).then(respuesta => {
+
         dispatch(loading(false));
+
         if (respuesta.ok) {
             guardarToken(respuesta);
             guardarDatosUsuario(respuesta);

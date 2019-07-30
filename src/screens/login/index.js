@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ImageBackground, toyse, TouchableOpacity} from  'react-native';
+import {ImageBackground, toyse, ActivityIndicator, View, KeyboardAvoidingView} from  'react-native';
 import {
     Container,
     Header,
@@ -12,7 +12,7 @@ import {
 } from "native-base";
 
 import { connect } from 'react-redux';
-import { validarLogin, token } from '../../redux/actions/login';
+import { validarLogin, getToken, loading } from '../../redux/actions/login';
 
 import styles from "./../home/styles";
 const bg_login = require("../../../assets/bg_login.png");
@@ -20,9 +20,9 @@ const img_login = require("../../../assets/contacts/himanshu.png");
 
 class Login extends Component {
 
-    constructor(){
-        super();
-
+    constructor(props){
+        super(props);
+        
         this.state = {
             email : null,
             password : null
@@ -31,13 +31,11 @@ class Login extends Component {
 
     componentDidMount(){
         this._bootstrapAsync();
-
     }
 
     _bootstrapAsync = () => {
-
-        this.props.retornarToken().then(() => {
-            if  (this.props.token.token !== null){
+        this.props.consultarToken().then(() => {
+            if  (this.props.token !== null){
                 this.props.navigation.navigate('Home');
             }
         })
@@ -47,7 +45,30 @@ class Login extends Component {
     };
 
     guardar(){
+        this.props.carga(true);
+        console.log(this.props.isLoading);
         this.props.validarUsuario(this.state);
+        console.log(this.props.isLoading);
+    }
+
+    boton(){
+        if(this.props.isLoading == null || this.props.isLoading == false){
+            return (<Button
+                block
+                rounded
+                style={styles.buttonLogin}
+                onPress={()=>{this.guardar()}}
+                >
+                    <View><Text>Ingresar</Text></View>
+                </Button>);
+        }else{ 
+            return (<Button
+                rounded
+                style={styles.buttonLogin}
+                >
+                    <View><ActivityIndicator /></View>
+                </Button>)
+        }                       
     }
 
     render() {
@@ -70,25 +91,22 @@ class Login extends Component {
 
                     <Content padder>
                         <Thumbnail style={styles.photo_log} source={img_login} />
-                        <Form style={styles.contentForm}>
-                            <Item rounded style={styles.itemForm}>
-                                <Icon active name="mail" style={{ color: "white" }} />
-                                <Input onChangeText={(email) => this.setState({email})} returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
-                            </Item>
-                            <Item rounded style={styles.itemForm}>
-                                <Icon active name="key" style={{ color: "white" }} />
-                                <Input onChangeText={(password) => this.setState({password})} style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
-                            </Item>
-                        </Form>
-                        <Button
-                            block
-                            rounded
-                            style={styles.buttonLogin}
-                            onPress={()=>{this.guardar()}}
-                        >
-                            <Icon active name="person" />
-                            <Text>Iniciar Sesión</Text>
-                        </Button>
+                        <KeyboardAvoidingView>
+                            <Form style={styles.contentForm}>
+                                <Item rounded style={styles.itemForm}>
+                                    <Icon active name="mail" style={{ color: "white" }} />
+                                    <Input onChangeText={(email) => this.setState({email})} returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
+                                </Item>
+                                <Item rounded style={styles.itemForm}>
+                                    <Icon active name="key" style={{ color: "white" }} />
+                                    <Input onChangeText={(password) => this.setState({password})} style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
+                                </Item>
+                            </Form>
+                            <View style={{display:"flex", justifyContent:"center"}}>
+                            {this.boton()}
+                            </View>
+                            
+                        </KeyboardAvoidingView>
                     </Content>
 
                 </ImageBackground>
@@ -98,20 +116,18 @@ class Login extends Component {
 }
 
 const mapStateProps = state =>{
-    return{
-        datosLogin: state.respuesta,
-        token: state.token
+    return {
+        datosLogin: state.login.respuesta,
+        token: state.login.token,
+        isLoading: state.login.loading
     }
 }
 
 const mapDispatchToProps = dispatch =>{
     return {
-        validarUsuario : datosUsuario => {
-            return dispatch(validarLogin(datosUsuario))
-        },
-        retornarToken : () => {
-            return dispatch(token());
-        }
+        validarUsuario : datosUsuario => dispatch(validarLogin(datosUsuario)),
+        consultarToken : () => dispatch(getToken()),
+        carga : estado => dispatch(loading(estado))
     }
 }
 
