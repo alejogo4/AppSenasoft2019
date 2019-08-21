@@ -12,6 +12,7 @@ import {
 
 
 import {connect} from 'react-redux';
+import {FlatList} from 'react-native';
 import {getProjects} from '../../redux/actions/proyecto';
 
 const sankhadeep = require("../../../assets/contacts/sankhadeep.png");
@@ -59,8 +60,12 @@ import TabFooter from "../footerTab/TabFooter";
 
 class Proyecto extends Component{
 
+
     constructor(props){
         super(props);
+        this.state ={
+            proyectos:null
+        }
     }
 
     componentDidMount(){
@@ -69,7 +74,14 @@ class Proyecto extends Component{
 
     _bootstrapAsync(){
         this.props.consultarProyectos().then(() => {
-           console.log(this.props.proyectos);
+
+           if(this.props.proyectos != null){
+               this.setState({
+                   proyectos:this.props.proyectos
+               })
+
+           }
+
         }).catch(error => {
             this.setState({ error })
         })
@@ -77,32 +89,32 @@ class Proyecto extends Component{
 
 
     render(){
+        console.log(this.state.proyectos);
         return(
             <Container style={styles.container}>
                 <MainHeader Navigate={this.props.navigation}/>
                 <Content>
-                    <List
-                        dataArray={datas}
-                        renderRow={data =>
-                            <ListItem thumbnail>
-                                <Left>
-                                    <Thumbnail square source={data.img} />
-                                </Left>
-                                <Body>
-                                <Text>
-                                    {data.text}
-                                </Text>
-                                <Text numberOfLines={1} note>
-                                    {data.note}
-                                </Text>
-                                </Body>
-                                <Right>
-                                    <Button transparent>
-                                        <Text>View</Text>
-                                    </Button>
-                                </Right>
-                            </ListItem>
-                        }
+
+                    <FlatList
+                        data={this.state.proyectos}
+                        renderItem={({item}) => <ListItem thumbnail>
+                            <Left>
+                                <Text>Image</Text>
+                            </Left>
+                            <Body>
+                            <Text>
+                                {item.arhivo_proyecto_centro}
+                            </Text>
+                            <Text numberOfLines={1} note>
+                                {item.arhivo_proyecto_centro}
+                            </Text>
+                            </Body>
+                            <Right>
+                                <Button transparent>
+                                    <Text>Ver</Text>
+                                </Button>
+                            </Right>
+                        </ListItem>}
                     />
                 </Content>
                 <TabFooter Navigate={this.props.navigation}/>

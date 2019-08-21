@@ -19,7 +19,7 @@ export const getProjects = () => dispatch => {
         //dispatch(loading(false));
 
         if (respuesta.ok) {
-            console.log(respuesta);
+
             dispatch(projects(respuesta.data));
             //NavigationService.navigate('Home');
         } else {
