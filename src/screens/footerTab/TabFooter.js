@@ -1,8 +1,10 @@
-import React , {PureComponent} from 'react';
+import React , {Component} from 'react';
 import {Button, FooterTab, Icon, Footer, Text} from "native-base";
 import styles from "../home/styles";
 
-export default class TabFooter extends PureComponent {
+class TabFooter extends Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +13,8 @@ export default class TabFooter extends PureComponent {
             tab3: false
         };
     }
+
+
     toggleTab1() {
         this.setState({
             tab1: true,
@@ -18,6 +22,7 @@ export default class TabFooter extends PureComponent {
             tab3: false
 
         });
+        this.props.Navigate.navigate('Home');
     }
     toggleTab2() {
         this.setState({
@@ -26,6 +31,8 @@ export default class TabFooter extends PureComponent {
             tab3: false
 
         });
+
+        this.props.Navigate.navigate('Proyecto');
     }
     toggleTab3() {
         this.setState({
@@ -64,3 +71,5 @@ export default class TabFooter extends PureComponent {
 
 }
 
+
+export default TabFooter;

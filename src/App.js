@@ -141,6 +141,7 @@ import Actionsheet from "./screens/actionsheet";
 import NHAccordion from "./screens/accordion/";
 import NHDatePicker from "./screens/datepicker/";
 import Login from "./screens/login";
+import Proyecto from './screens/proyectos';
 //Importaciones propias
 
 
@@ -310,7 +311,8 @@ const AppNavigator = createStackNavigator(
     AccordionIconStyle: { screen: AccordionIconStyle },
     AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
     AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent },
-    Login:{screen:Login}
+    Login:{screen:Login},
+      Proyecto:{screen:Proyecto}
   },
   {
     initialRouteName: "Drawer",

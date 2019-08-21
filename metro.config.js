@@ -13,8 +13,5 @@ module.exports = {
         inlineRequires: false,
       },
     }),
-  },
-  server: {
-    port: 9383
   }
 };

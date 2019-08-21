@@ -20,7 +20,7 @@ import {
 import styles from "./styles";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import TabFooter  from '../footerTab/TabFooter';
-
+import MainHeader from '../MainHeader/index'
 const mascota = require("../../../assets/mascota.png");
 const cardImage = require("../../../assets/bienvenida-cover.png");
 
@@ -29,18 +29,7 @@ class Home extends Component {
   render() {
     return (
       <Container style={styles.container}>
-              <Header style={{ backgroundColor: "#207CA0" }}
-                  androidStatusBarColor="#1B687F"
-                  iosBarStyle="light-content">
-              <Body>
-              <Title>Senasoft 2019</Title>
-              </Body>
-              <Right>
-                  <Button transparent onPress={() => this.props.navigation.navigate("Login")}>
-                      <Icon name="person" />
-                  </Button>
-              </Right>
-          </Header>
+          <MainHeader Navigate={this.props.navigation}/>
           <Content padder>
               <Card style={styles.mb}>
                   <CardItem>
@@ -82,7 +71,7 @@ class Home extends Component {
                       <Col style={{ backgroundColor: "#00CE9F" }} >
                           <Button
                               style={{ backgroundColor: "#6FAF98", alignSelf: "center" }}
-                              onPress={() => this.props.navigation.openDrawer()}
+                              onPress={() => this.props.navigation.navigate('Proyecto')}
                           >
                               <Text>Lets Go!</Text>
                           </Button>
@@ -92,7 +81,7 @@ class Home extends Component {
                               style={{ backgroundColor: "#6FAF98", alignSelf: "center" }}
                               onPress={() => this.props.navigation.openDrawer()}
                           >
-                              <Text>Lets Go!</Text>
+                              <Text>Lets Goo!</Text>
                           </Button>
                       </Col>
 
@@ -100,7 +89,7 @@ class Home extends Component {
 
               </Grid>
           </Content>
-          <TabFooter/>
+          <TabFooter Navigate={this.props.navigation}/>
 
       </Container>
     );
