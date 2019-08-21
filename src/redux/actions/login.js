@@ -52,7 +52,7 @@ export const getUser = () => dispatch => {
     return AsyncStorage.getItem('user')
         .then((data) => {
             dispatch(loading(false));
-            dispatch(user(data));
+            dispatch(user(JSON.parse(data)));
         })
         .catch((err) => {
             dispatch(loading(false));
@@ -64,7 +64,6 @@ const guardarToken = (data) => dispatch => {
     AsyncStorage.setItem('token', data.token)
         .then((data) => {
             dispatch(loading(false));
-            dispatch(saveToken('token saved'));
         })
         .catch((err) => {
             dispatch(loading(false));
@@ -76,7 +75,6 @@ const guardarDatosUsuario = (data) => dispatch => {
     AsyncStorage.setItem('user', JSON.stringify(data.user))
         .then((data) => {
             dispatch(loading(false));
-            dispatch(saveToken('token saved'));
         })
         .catch((err) => {
             dispatch(loading(false));
@@ -87,6 +85,7 @@ const guardarDatosUsuario = (data) => dispatch => {
 export const removerToken = () => dispatch => {
     return AsyncStorage.removeItem('token')
         .then((data) => {
+            dispatch(token(null));
             dispatch(loading(false));
         })
         .catch((err) => {
@@ -102,8 +101,8 @@ export const validarLogin = data => dispatch => {
         dispatch(loading(false));
 
         if (respuesta.ok) {
-            guardarToken(respuesta);
-            guardarDatosUsuario(respuesta);
+            dispatch(guardarToken(respuesta));
+            dispatch(guardarDatosUsuario(respuesta));
             NavigationService.navigate('Home');
         } else {
             Toast.show({

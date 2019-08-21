@@ -312,7 +312,7 @@ const AppNavigator = createStackNavigator(
     AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
     AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent },
     Login:{screen:Login},
-      Proyecto:{screen:Proyecto}
+    Proyecto:{screen:Proyecto}
   },
   {
     initialRouteName: "Drawer",

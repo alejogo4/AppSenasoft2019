@@ -46,9 +46,7 @@ class Login extends Component {
 
     guardar(){
         this.props.carga(true);
-        console.log(this.props.isLoading);
         this.props.validarUsuario(this.state);
-        console.log(this.props.isLoading);
     }
 
     boton(){
@@ -95,11 +93,11 @@ class Login extends Component {
                             <Form style={styles.contentForm}>
                                 <Item rounded style={styles.itemForm}>
                                     <Icon active name="mail" style={{ color: "white" }} />
-                                    <Input onChangeText={(email) => this.setState({email})} returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
+                                    <Input autoCapitalize="none" onChangeText={(email) => this.setState({email})} returnKeyType={"next"} style={styles.inputColor} placeholder="Correo" placeholderTextColor="white"/>
                                 </Item>
                                 <Item rounded style={styles.itemForm}>
                                     <Icon active name="key" style={{ color: "white" }} />
-                                    <Input onChangeText={(password) => this.setState({password})} style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
+                                    <Input autoCapitalize="none" onChangeText={(password) => this.setState({password})} style={styles.inputColor} placeholder="Contraseña" secureTextEntry placeholderTextColor="white"/>
                                 </Item>
                             </Form>
                             <View style={{display:"flex", justifyContent:"center"}}>
