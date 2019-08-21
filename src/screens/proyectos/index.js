@@ -10,6 +10,7 @@ import {
     Thumbnail, Text,Body
 } from 'native-base';
 
+import {DrawerActions} from 'react-navigation-drawer';
 
 import {connect} from 'react-redux';
 import {FlatList} from 'react-native';
@@ -69,6 +70,7 @@ class Proyecto extends Component{
     }
 
     componentDidMount(){
+        console.log(this.props.navigation);
         this._bootstrapAsync();
     }
 

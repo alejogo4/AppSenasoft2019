@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {Body, Button, Header, Icon, Right, Title, Text, Left} from "native-base";
 import {connect} from 'react-redux';
+import NavigationService from './../../services/NavigationService';
+import { DrawerActions } from 'react-navigation-drawer';
 
 import { getToken, removerToken } from '../../redux/actions/login';
 
@@ -13,22 +15,12 @@ class MainHeader extends Component{
         }
     }
 
-    componentWillReceiveProps(){
-        this._bootstrapSync();
-    }
-
     componentDidMount(){
         this._bootstrapSync();
     }
 
     _bootstrapSync() {
-        this.props.consultarToken().then(()=>{
-            if(this.props.token != null){
-                this.setState({
-                    token: this.props.token
-                });
-            }
-        })
+        this.props.consultarToken();
     }
 
     salir(){
@@ -38,14 +30,13 @@ class MainHeader extends Component{
 
     render(){
 
-        console.log(this.props.token)
         return(
             <Header style={{ backgroundColor: "#207CA0" }}
                     androidStatusBarColor="#1B687F"
                     iosBarStyle="light-content">
 
-                {this.state.token != null || this.state.token != undefined ? <Left>
-                    <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
+                {this.props.token != null || this.props.token != undefined ? <Left>
+                    <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
                     <Icon name="menu" />
                     </Button>
                 </Left> : <Text></Text>}
@@ -54,8 +45,8 @@ class MainHeader extends Component{
                 <Title>Senasoft 2019</Title>
                 </Body>
                 <Right>
-                    {this.state.token == null || this.state.token == undefined ?
-                    <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
+                    {this.props.token == null || this.props.token == undefined ?
+                    <Button transparent onPress={() => NavigationService.navigate("Login")}>
                         <Icon name="person" />
                     </Button>
                     : 

@@ -103,7 +103,7 @@ export const validarLogin = data => dispatch => {
         if (respuesta.ok) {
             dispatch(guardarToken(respuesta));
             dispatch(guardarDatosUsuario(respuesta));
-            NavigationService.navigate('Home');
+            NavigationService.navigate('Proyecto');
         } else {
             Toast.show({
                 text: respuesta.mensaje,
