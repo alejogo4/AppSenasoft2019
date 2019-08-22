@@ -20,6 +20,10 @@ class TabFooter extends Component {
     }
 
     componentDidMount(){
+        this.hoverTab();
+    }
+
+    hoverTab(){
         let data = {
             tab1: true,
             tab2: false,
@@ -29,7 +33,6 @@ class TabFooter extends Component {
         this.props.changeTab(data);
 
         this.setState({tabs : this.props.tabsState==null || this.props.tabsState==undefined ? data : this.props.tabsState});
-        //console.log(this.props.tabsState);
     }
     toggleTab1() {
         let data = {

@@ -30,33 +30,67 @@ class MainHeader extends Component{
 
     render(){
 
-        return(
-            <Header style={{ backgroundColor: "#207CA0" }}
-                    androidStatusBarColor="#1B687F"
-                    iosBarStyle="light-content">
+        if(this.props.transparent != "true" || this.props.transparent == null){
+            return(
 
-                {this.props.token != null || this.props.token != undefined ? <Left>
-                    <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
-                    <Icon name="menu" />
-                    </Button>
-                </Left> : <Text></Text>}
+                <Header style={{ backgroundColor: "#207CA0" }}
+                        androidStatusBarColor="#1B687F"
+                        iosBarStyle="light-content">
 
-                <Body>
-                <Title>Senasoft 2019</Title>
-                </Body>
-                <Right>
-                    {this.props.token == null || this.props.token == undefined ?
-                    <Button transparent onPress={() => NavigationService.navigate("Login")}>
-                        <Icon name="person" />
-                    </Button>
-                    : 
-                    <Button transparent onPress={() => this.props.salir()}>
-                        <Icon name="power" />
-                    </Button>}
-                    
-                </Right>
-            </Header>
-        )
+                    {this.props.token != null || this.props.token != undefined ? <Left>
+                        <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
+                            <Icon name="menu" />
+                        </Button>
+                    </Left> : <Text></Text>}
+
+                    <Body>
+                    <Title></Title>
+                    </Body>
+                    <Right>
+                        {this.props.token == null || this.props.token == undefined ?
+                            <Button transparent onPress={() => NavigationService.navigate("Login")}>
+                                <Icon name="person" />
+                            </Button>
+                            :
+                            <Button transparent onPress={() => this.props.salir()}>
+                                <Icon name="power" />
+
+                            </Button>}
+
+                    </Right>
+                </Header>
+            )
+        }else{
+            return(
+
+                <Header androidStatusBarColor="#1B687F"
+                        iosBarStyle="light-content" transparent>
+
+                    {this.props.token != null || this.props.token != undefined ? <Left>
+                        <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
+                            <Icon name="menu" />
+                        </Button>
+                    </Left> : <Text></Text>}
+
+                    <Body>
+                    <Title></Title>
+                    </Body>
+                    <Right>
+                        {this.props.token == null || this.props.token == undefined ?
+                            <Button transparent onPress={() => NavigationService.navigate("Login")}>
+                                <Icon name="person" />
+                            </Button>
+                            :
+                            <Button transparent onPress={() => this.props.salir()}>
+                                <Icon name="power" />
+
+                            </Button>}
+
+                    </Right>
+                </Header>
+            )
+        }
+
     }
 
 }

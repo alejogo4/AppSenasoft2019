@@ -8,4 +8,5 @@ export const tabs = (stateTabs) => ({
 
 export const changeTab = data => dispatch =>{
     dispatch(tabs(data));
+
 }
