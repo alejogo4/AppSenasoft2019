@@ -63,6 +63,7 @@
 		86D55C6ADE5E438E928528C3 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F562732DCD4AFBA27134EF /* libSplashScreen.a */; };
 		93E75A49B98B4C3885B04F75 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14384F14E98D4DF7A7C03E32 /* libRNVectorIcons.a */; };
 		2ABABA9A92DD45FBA226E16E /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 030B0ABD57FA4F259D7BBF52 /* libRNVectorIcons-tvOS.a */; };
+		4607B0F6F5F442BE92A056E4 /* libReactNativeCameraKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B36D0C40E44202B0A0E1AA /* libReactNativeCameraKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,6 +398,8 @@
 		BBCD8BDE1D6E4271AD04EFC8 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; name = "RNVectorIcons.xcodeproj"; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		14384F14E98D4DF7A7C03E32 /* libRNVectorIcons.a */ = {isa = PBXFileReference; name = "libRNVectorIcons.a"; path = "libRNVectorIcons.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		030B0ABD57FA4F259D7BBF52 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; name = "libRNVectorIcons-tvOS.a"; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		27A77A4D1EA64F44B31FD12B /* ReactNativeCameraKit.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeCameraKit.xcodeproj"; path = "../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		86B36D0C40E44202B0A0E1AA /* libReactNativeCameraKit.a */ = {isa = PBXFileReference; name = "libReactNativeCameraKit.a"; path = "libReactNativeCameraKit.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +431,7 @@
 				2698D1DDD094437A936569EF /* libRNGestureHandler.a in Frameworks */,
 				86D55C6ADE5E438E928528C3 /* libSplashScreen.a in Frameworks */,
 				93E75A49B98B4C3885B04F75 /* libRNVectorIcons.a in Frameworks */,
+				4607B0F6F5F442BE92A056E4 /* libReactNativeCameraKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +626,7 @@
 				BF3F6CB5EC004569809CAC8F /* RNGestureHandler.xcodeproj */,
 				D2871A5A4AD74DE89144EE99 /* SplashScreen.xcodeproj */,
 				BBCD8BDE1D6E4271AD04EFC8 /* RNVectorIcons.xcodeproj */,
+				27A77A4D1EA64F44B31FD12B /* ReactNativeCameraKit.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1301,12 +1306,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Debug;
@@ -1333,12 +1340,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Release;
@@ -1364,6 +1373,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Debug;
@@ -1388,6 +1398,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Release;
@@ -1422,12 +1433,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Debug;
@@ -1462,12 +1475,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Release;
@@ -1501,12 +1516,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Debug;
@@ -1540,12 +1557,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
+					"$(SRCROOT)\..\node_modules\react-native-camera-kit\ios\lib\ReactNativeCameraKit",
 				);
 			};
 			name = Release;

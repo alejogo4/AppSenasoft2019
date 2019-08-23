@@ -3,6 +3,7 @@ package com.senasoft2019;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCameraKitPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
             new RNGestureHandlerPackage()
