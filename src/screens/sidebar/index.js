@@ -187,7 +187,13 @@ const datas = [
     route: "NHTypography",
     icon: "paper",
     bg: "#48525D"
-  }
+  },
+    {
+        name: "Refrigerios",
+        route: "Refrigerios",
+        icon: "paper",
+        bg: "#48525D"
+    }
 ];
 
 class SideBar extends Component {

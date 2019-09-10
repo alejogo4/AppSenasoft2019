@@ -38,7 +38,7 @@ class MainHeader extends Component{
                         iosBarStyle="light-content">
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
-                        <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
+                        <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
                             <Icon name="menu" />
                         </Button>
                     </Left> : <Text></Text>}
@@ -48,7 +48,7 @@ class MainHeader extends Component{
                     </Body>
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
-                            <Button transparent onPress={() => NavigationService.navigate("Login")}>
+                            <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
                                 <Icon name="person" />
                             </Button>
                             :
@@ -67,7 +67,7 @@ class MainHeader extends Component{
                         iosBarStyle="light-content" transparent>
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
-                        <Button transparent onPress={() => this.props.Navigate.dispatch(DrawerActions.openDrawer())}>
+                        <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
                             <Icon name="menu" />
                         </Button>
                     </Left> : <Text></Text>}
@@ -77,7 +77,7 @@ class MainHeader extends Component{
                     </Body>
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
-                            <Button transparent onPress={() => NavigationService.navigate("Login")}>
+                            <Button transparent onPress={() => Navigate.navigate('Login')}>
                                 <Icon name="person" />
                             </Button>
                             :

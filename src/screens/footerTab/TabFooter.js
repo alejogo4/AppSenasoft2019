@@ -103,7 +103,6 @@ const mapStateProps = state =>{
 const mapDispatchToProps = dispatch =>{
     return {
         changeTab : (stateTabs) => {
-            //console.log(stateTabs);
             return dispatch(changeTab(stateTabs))
         }
     }

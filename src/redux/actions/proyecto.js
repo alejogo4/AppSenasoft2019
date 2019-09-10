@@ -15,16 +15,10 @@ export const error = error => ({
 
 export const getProjects = () => dispatch => {
     return APIprojects().then(respuesta => {
-
-        //dispatch(loading(false));
-
         if (respuesta.ok) {
-
             dispatch(projects(respuesta.data));
-            //NavigationService.navigate('Home');
         } else {
 
         }
-        //dispatch(respuestaLogin(respuesta));
     });
 }

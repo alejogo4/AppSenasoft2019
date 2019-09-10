@@ -11,18 +11,22 @@ import {
     Text
 } from "native-base";
 
-import styles from "./styles";
+import {validarRefrigerio} from '../../redux/actions/refrigerio'
+import { connect } from 'react-redux';
+import styles from "../Header/styles";
 import { StyleSheet, View, Platform, TouchableOpacity, Linking, PermissionsAndroid } from 'react-native';
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
+import {getToken} from "../../redux/actions/login";
 
-class Header1 extends Component {
+
+class Refrigerios extends Component {
     constructor() {
 
         super();
 
         this.state = {
 
-            QR_Code_Value: '',
+            cedula: '',
 
             Start_Scanner: false,
 
@@ -33,13 +37,13 @@ class Header1 extends Component {
 
     openLink_in_browser = () => {
 
-        Linking.openURL(this.state.QR_Code_Value);
+        Linking.openURL(this.state.cedula);
 
     }
 
     onQR_Code_Scan_Done = (QR_Code) => {
 
-        this.setState({ QR_Code_Value: QR_Code });
+        this.setState({ cedula: QR_Code });
 
         this.setState({ Start_Scanner: false });
     }
@@ -59,7 +63,7 @@ class Header1 extends Component {
                     )
                     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
-                        that.setState({ QR_Code_Value: '' });
+                        that.setState({ cedula: '' });
                         that.setState({ Start_Scanner: true });
                     } else {
                         alert("CAMERA permission denied");
@@ -71,16 +75,16 @@ class Header1 extends Component {
             }
             requestCameraPermission();
         } else {
-            that.setState({ QR_Code_Value: '' });
+            that.setState({ cedula: '' });
             that.setState({ Start_Scanner: true });
         }
     }
 
     componentDidUpdate(prevProps, prevState){
 
-           if(prevState.QR_Code_Value != this.state.QR_Code_Value){
-               console.log("leer QR");
-           }
+        if(prevState.cedula != this.state.cedula){
+            console.log("leer QR");
+        }
     }
 
     render() {
@@ -89,13 +93,14 @@ class Header1 extends Component {
             return (
                 <View style={styles.MainContainer}>
 
-                    <Text style={{ fontSize: 22, textAlign: 'center' }}>React Native Scan QR Code Example</Text>
+                    <Text style={{ fontSize: 22, textAlign: 'center' }}>Escanear la escarapela para registro de fichos</Text>
 
                     <Text style={styles.QR_text}>
-                        {this.state.QR_Code_Value ? 'Dato escaneado: ' + this.state.QR_Code_Value : ''}
+                        /*{this.state.cedula ? 'Dato escaneado: ' + this.state.cedula : ''}*/
+                        {this.state.cedula ? this.props.consultarRespuesta(this.state) : ''}
                     </Text>
 
-                    {this.state.QR_Code_Value.includes("http") ?
+                    {this.state.cedula.includes("http") ?
                         <TouchableOpacity
                             onPress={this.openLink_in_browser}
                             style={styles.button}>
@@ -107,7 +112,7 @@ class Header1 extends Component {
                         onPress={this.open_QR_Code_Scanner}
                         style={styles.button}>
                         <Text style={{ color: '#FFF', fontSize: 14 }}>
-                            Open QR Scanner
+                            Abrir escaner
                         </Text>
                     </Button>
 
@@ -133,4 +138,17 @@ class Header1 extends Component {
     }
 }
 
-export default Header1;
+const mapStateProps = state =>{
+    return {
+        respuestaRefrigerio : state.refrigerio.respuesta,
+
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        consultarRespuesta : (data) => dispatch(validarRefrigerio(data))
+    }
+}
+
+export default connect(mapStateProps, mapDispatchToProps)(Refrigerios);

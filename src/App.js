@@ -143,6 +143,7 @@ import NHDatePicker from "./screens/datepicker/";
 import Login from "./screens/login";
 import Proyecto from './screens/proyectos';
 import Profile from './screens/profile';
+import Refrigerios from './screens/refrigerios'
 //Importaciones propias
 
 
@@ -177,7 +178,8 @@ const Drawer = createDrawerNavigator(
     NHAccordion: { screen: NHAccordion },
     NHDatePicker: { screen: NHDatePicker },
       Proyecto:{screen:Proyecto},
-    Profile:{screen:Profile}
+    Profile:{screen:Profile},
+    Refrigerios:{screen:Refrigerios}
   },
   {
     initialRouteName: "Home",
@@ -316,7 +318,8 @@ const AppNavigator = createStackNavigator(
     AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent },
     Login:{screen:Login},
     Proyecto:{screen:Proyecto},
-      Profile:{screen:Profile}
+    Profile:{screen:Profile},
+      Refrigerios:{screen:Refrigerios}
 
   },
   {

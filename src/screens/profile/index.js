@@ -37,14 +37,16 @@ class Profile extends Component {
 
     _consultaUser() {
         this.props.consultarUser();
+
     }
 
     render() {
         return (
             <Container style={styles.container}>
                 <ImageBackground source={bg_profile} style={{width: '100%', height: '70%'}}>
-                    <MainHeader transparent='true'/>
+                    <MainHeader Navigate={this.props.navigation} transparent='true'/>
                     <Text>{this.props.user==null?"":this.props.user.name}</Text>
+                    <Text>{this.props.user==null?"":this.props.user.email}</Text>
                 </ImageBackground>
 
             </Container>
