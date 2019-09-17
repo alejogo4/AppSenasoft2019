@@ -9,6 +9,6 @@ export const sendRefrigerio = data => {
         }
     };
 
-    return fetch(`${URL}/usuario`, request)
+    return fetch(`${URL}/registrosRefrigerio`, request)
         .then(response => response.json());
 }

@@ -96,7 +96,7 @@ class Refrigerios extends Component {
                     <Text style={{ fontSize: 22, textAlign: 'center' }}>Escanear la escarapela para registro de fichos</Text>
 
                     <Text style={styles.QR_text}>
-                        /*{this.state.cedula ? 'Dato escaneado: ' + this.state.cedula : ''}*/
+                        {this.state.cedula ? 'Dato escaneado: ' + this.state.cedula : ''}
                         {this.state.cedula ? this.props.consultarRespuesta(this.state) : ''}
                     </Text>
 
@@ -147,7 +147,9 @@ const mapStateProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return {
-        consultarRespuesta : (data) => dispatch(validarRefrigerio(data))
+        consultarRespuesta : (data) => {
+
+            dispatch(validarRefrigerio(data))}
     }
 }
 
