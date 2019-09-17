@@ -144,6 +144,7 @@ import Login from "./screens/login";
 import Proyecto from './screens/proyectos';
 import Profile from './screens/profile';
 import Refrigerios from './screens/refrigerios'
+import Equipaje from './screens/equipaje'
 //Importaciones propias
 
 
@@ -176,7 +177,7 @@ const Drawer = createDrawerNavigator(
     NHToast: { screen: NHToast },
     Actionsheet: { screen: Actionsheet },
     NHAccordion: { screen: NHAccordion },
-    NHDatePicker: { screen: NHDatePicker },
+    Equipaje: { screen: Equipaje },
       Proyecto:{screen:Proyecto},
     Profile:{screen:Profile},
     Refrigerios:{screen:Refrigerios}
@@ -319,7 +320,7 @@ const AppNavigator = createStackNavigator(
     Login:{screen:Login},
     Proyecto:{screen:Proyecto},
     Profile:{screen:Profile},
-      Refrigerios:{screen:Refrigerios}
+    Refrigerios:{screen:Refrigerios}
 
   },
   {

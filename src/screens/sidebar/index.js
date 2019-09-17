@@ -193,7 +193,13 @@ const datas = [
         route: "Refrigerios",
         icon: "paper",
         bg: "#48525D"
-    }
+    },
+    {
+      name: "Equipaje",
+      route: "Equipaje",
+      icon: "radio-button-on",
+      bg: "#48525D"
+  }
 ];
 
 class SideBar extends Component {
