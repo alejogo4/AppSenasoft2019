@@ -1,6 +1,6 @@
 export default {
   container: {
-    backgroundColor: "#FFF"
+    backgroundColor: "#e9ecf4"
   },
   text: {
     alignSelf: "center",

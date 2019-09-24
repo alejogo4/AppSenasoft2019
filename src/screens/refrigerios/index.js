@@ -1,22 +1,30 @@
 import React, { Component } from "react";
 import {
-    Container,
-    Header,
-    Title,
-    Content,
-    Button,
-    Left,
-    Right,
-    Body,
-    Text
-} from "native-base";
+    StyleSheet,
+    View,
+    Platform,
+    TouchableOpacity,
+    Linking,
+    ScrollView,
+    PermissionsAndroid,
+} from 'react-native';
+
+import {
+    Text,
+    H1,
+    H2,
+} from 'native-base';
+
+import { Grid, Row, Col } from "react-native-easy-grid";
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { CameraKitCameraScreen, } from 'react-native-camera-kit';
+
 
 import {validarRefrigerio} from '../../redux/actions/refrigerio'
 import { connect } from 'react-redux';
 import styles from "../Header/styles";
-import { StyleSheet, View, Platform, TouchableOpacity, Linking, PermissionsAndroid } from 'react-native';
-import { CameraKitCameraScreen, } from 'react-native-camera-kit';
-import {getToken} from "../../redux/actions/login";
+import MainHeader from "../MainHeader";
 
 
 class Refrigerios extends Component {
@@ -91,32 +99,41 @@ class Refrigerios extends Component {
         if (!this.state.Start_Scanner) {
 
             return (
-                <View style={styles.MainContainer}>
+                <ScrollView>
+                    <MainHeader Navigate={this.props.navigation}/>
+                    <Grid>
+                        <Row style={{height:40, marginTop:10}}>
+                            <Col size={100} style={{alignItems:'center'}}>
+                                <H2>Refrigerios</H2>
+                            </Col>
+                        </Row>
+                        <Row style={{height:100}}>
+                            <Col style={{alignItems:'center', backgroundColor:'#f1f1f1'}}>
+                                <TouchableOpacity style={styles.escanear} onPress={this.open_QR_Code_Scanner} >
+                                    <Icon name="qrcode" size={60}/>
+                                    <Text>Escanear</Text>
+                                </TouchableOpacity>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Text style={styles.QR_text}>
+                                    {this.state.cedula ? 'Cedula Registrada : ' + this.state.cedula : ''}
+                                    {this.state.cedula ? this.props.consultarRespuesta(this.state) : ''}
+                                </Text>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.info_qr}>
+                                <Text style={{color:"#cccccc", textAlign:'center'}}>
+                                    Escanea el QR situado en la escarapela para realizar el registro de refrigerios
+                                </Text>
+                            </Col>
+                        </Row>
+                    </Grid>
 
-                    <Text style={{ fontSize: 22, textAlign: 'center' }}>Escanear la escarapela para registro de fichos</Text>
+                </ScrollView>
 
-                    <Text style={styles.QR_text}>
-                        {this.state.cedula ? 'Dato escaneado: ' + this.state.cedula : ''}
-                        {this.state.cedula ? this.props.consultarRespuesta(this.state) : ''}
-                    </Text>
-
-                    {this.state.cedula.includes("http") ?
-                        <TouchableOpacity
-                            onPress={this.openLink_in_browser}
-                            style={styles.button}>
-                            <Text style={{ color: '#FFF', fontSize: 14 }}>Open Link in default Browser</Text>
-                        </TouchableOpacity> : null
-                    }
-
-                    <Button
-                        onPress={this.open_QR_Code_Scanner}
-                        style={styles.button}>
-                        <Text style={{ color: '#FFF', fontSize: 14 }}>
-                            Abrir escaner
-                        </Text>
-                    </Button>
-
-                </View>
             );
         }
         return (

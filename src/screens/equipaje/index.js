@@ -113,7 +113,7 @@ class Equipaje extends Component {
     return (
         this.state.scanner === false ?
         <Grid>
-            <MainHeader />
+            <MainHeader Navigate={this.props.navigation}/>
             <Row style={{height:40, marginTop:10}}>
                 <Col size={100} style={{alignItems:'center'}}>
                     <H2>Equipaje</H2>

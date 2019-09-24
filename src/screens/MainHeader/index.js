@@ -33,13 +33,13 @@ class MainHeader extends Component{
         if(this.props.transparent != "true" || this.props.transparent == null){
             return(
 
-                <Header style={{ backgroundColor: "#207CA0" }}
-                        androidStatusBarColor="#1B687F"
+                <Header transparent
+                        androidStatusBarColor="#127871"
                         iosBarStyle="light-content">
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
                         <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <Icon name="menu" />
+                            <Icon name="menu" style={{ color: "#ffffff" }}/>
                         </Button>
                     </Left> : <Text></Text>}
 
@@ -49,11 +49,11 @@ class MainHeader extends Component{
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
                             <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
-                                <Icon name="person" />
+                                <Icon name="person" style={{ color: "#ffffff" }}  />
                             </Button>
                             :
                             <Button transparent onPress={() => this.props.salir()}>
-                                <Icon name="power" />
+                                <Icon name="power" style={{ color: "#ffffff" }}/>
 
                             </Button>}
 
@@ -68,7 +68,7 @@ class MainHeader extends Component{
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
                         <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <Icon name="menu" />
+                            <Icon name="menu" style={{ color: "#ffffff" }}  />
                         </Button>
                     </Left> : <Text></Text>}
 
@@ -78,11 +78,11 @@ class MainHeader extends Component{
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
                             <Button transparent onPress={() => Navigate.navigate('Login')}>
-                                <Icon name="person" />
+                                <Icon name="person" style={{ color: "#ffffff" }}  />
                             </Button>
                             :
                             <Button transparent onPress={() => this.props.salir()}>
-                                <Icon name="power" />
+                                <Icon name="power" style={{ color: "#ffffff" }} />
 
                             </Button>}
 

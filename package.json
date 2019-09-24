@@ -7,7 +7,9 @@
         "test": "jest"
     },
     "dependencies": {
+        "@ant-design/icons-react-native": "^1.0.2",
         "color": "1.0.3",
+        "feather-icons-react": "^0.3.2",
         "jetifier": "^1.6.3",
         "lodash": "4.17.10",
         "moment": "2.13.0",

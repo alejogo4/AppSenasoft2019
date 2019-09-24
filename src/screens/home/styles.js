@@ -28,19 +28,63 @@ export default {
   },
 
     container: {
-        backgroundColor: "#FFF"
+        backgroundColor: "#e9ecf4"
     },
 
     mb: {
         marginTop:5,
-        marginBottom: 5
+        marginBottom: 5,
+        position: 'relative'
     },
     mt: {
         marginTop:20,
     },
-    primaryColor:{
-        backgroundColor: "#207CA0",
+    head:{
+        width: '100%',
+        height: '70%',
+        resizeMode:'bottom',
+        position:'relative',
+        borderWidth:1,
+        borderColor : "red",
     },
+    container_text_intro:{
+      flex:0.5,
+        width:"70%",
+        paddingLeft: 10
+    },
+    text_head_h1:{
+      color:"#f8ffff",
+        textAlign: "left",
+        fontFamily: "Roboto_medium"
+    },
+    text_head_p:{
+        color:"#f8ffff",
+        textAlign: "left",
+        marginTop:20,
+        fontSize:14
+    },
+    personaje:{
+        width:150,
+        height:170,
+        position:'absolute',
+        right:-30,
+        top:140,
+        resizeMode:"stretch"
+    },
+    primaryColor:{
+        backgroundColor: "#FFFFFF",
+    },
+    footer:{
+        backgroundColor: "#FFFFFF",
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+
+    },
+    cont_footer:{
+      backgroundColor:"transparent",
+        overflow:'hidden'
+    }
+    ,
     photo_log:{
         width:150,
         height:150,
@@ -64,5 +108,12 @@ export default {
     },
     buttonLogin:{
         margin: 15, marginTop: 50,backgroundColor: "#207CA0"
+    },
+    categorias_text:{
+      paddingVertical: 0,
+        width: 180,
+        position: 'absolute',
+        bottom: 10,
+        color:"#424242"
     }
 };

@@ -12,7 +12,8 @@ export default {
     paddingLeft: 15
   },
   iconText: {
-    fontSize: 12
+    fontSize: 12,
+      color: "#C1C1C3"
   },
   icon: {
     width: 45,

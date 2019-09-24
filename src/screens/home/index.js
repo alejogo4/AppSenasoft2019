@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
+import {Image, Dimensions, ImageBackground, View} from "react-native";
 import {
     Container,
     Button,
@@ -12,23 +12,44 @@ import {
     Thumbnail,
     Card,
     Content,
+    H1
 
 } from "native-base";
 
 import styles from "./styles";
 import { Grid, Row, Col } from "react-native-easy-grid";
+
+
+
 import TabFooter  from '../footerTab/TabFooter';
 import MainHeader from '../MainHeader/index'
 const mascota = require("../../../assets/mascota.png");
+const personaje = require("../../../assets/personaje.png");
 const cardImage = require("../../../assets/bienvenida-cover.png");
+const bg_profile = require('../../../assets/bg_profile.png');
 
 class Home extends Component {
+
+    constructor(props){
+        super(props);
+        this.state ={
+
+        }
+    }
 
   render() {
     return (
       <Container style={styles.container}>
-          <MainHeader Navigate={this.props.navigation}/>
+          <ImageBackground source={bg_profile} style={styles.head}>
+              <MainHeader Navigate={this.props.navigation}/>
+              <View style={styles.container_text_intro}>
+                <H1 style={styles.text_head_h1}>SENASOFT 2019</H1>
+                  <Text style={styles.text_head_p}>SENASOFT es el mayor encuentro de tecnología realizado por el SENA, como iniciativa de la red de conocimiento en informática, Diseño Y Desarrollo de Software.</Text>
+              </View>
+              <Thumbnail source={personaje} style={styles.personaje}/>
+          </ImageBackground>
           <Content padder>
+
               <Card style={styles.mb}>
                   <CardItem>
                       <Left>
