@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Body, Button, Header, Icon, Right, Title, Text, Left} from "native-base";
 import {connect} from 'react-redux';
+import { IconFill, IconOutline } from "@ant-design/icons-react-native";
 import NavigationService from './../../services/NavigationService';
 import { DrawerActions } from 'react-navigation-drawer';
 
@@ -39,7 +40,7 @@ class MainHeader extends Component{
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
                         <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <Icon name="menu" style={{ color: "#ffffff" }}/>
+                            <IconOutline name="menu" size={20} style={{ color: "#ffffff" }}/>
                         </Button>
                     </Left> : <Text></Text>}
 
@@ -49,7 +50,7 @@ class MainHeader extends Component{
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
                             <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
-                                <Icon name="person" style={{ color: "#ffffff" }}  />
+                                <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
                             </Button>
                             :
                             <Button transparent onPress={() => this.props.salir()}>
@@ -68,7 +69,7 @@ class MainHeader extends Component{
 
                     {this.props.token != null || this.props.token != undefined ? <Left>
                         <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <Icon name="menu" style={{ color: "#ffffff" }}  />
+                            <IconOutline size={20} name="menu" style={{ color: "#ffffff" }}  />
                         </Button>
                     </Left> : <Text></Text>}
 
@@ -78,7 +79,7 @@ class MainHeader extends Component{
                     <Right>
                         {this.props.token == null || this.props.token == undefined ?
                             <Button transparent onPress={() => Navigate.navigate('Login')}>
-                                <Icon name="person" style={{ color: "#ffffff" }}  />
+                                <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
                             </Button>
                             :
                             <Button transparent onPress={() => this.props.salir()}>

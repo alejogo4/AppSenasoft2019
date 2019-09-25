@@ -1,31 +1,78 @@
 import React, { Component } from "react";
-import {Image, Dimensions, ImageBackground, View} from "react-native";
+import {Image, View, TouchableOpacity} from "react-native";
 import {
     Container,
-    Button,
     Text,
-    Left,
-    Right,
-    Icon,
-    Body,
-    CardItem,
     Thumbnail,
-    Card,
+
     Content,
-    H1
+    H1,
+    H3
 
 } from "native-base";
 
-import styles from "./styles";
-import { Grid, Row, Col } from "react-native-easy-grid";
+import Icon3 from 'react-native-vector-icons/FontAwesome';
 
+import styles from "./styles";
+
+import { Grid, Row, Col } from "react-native-easy-grid";
+const categorias = [
+    {
+        icon:"file-code-o",
+        color:"#dfcdfa",
+        iconColor:"#6d3f71",
+        nombre:"Desarrollo Web"
+    },{
+        icon:"sitemap",
+        color:"#d1e0e5",
+        iconColor:"#61a4bc",
+        nombre:"Desarrollo Algoritmos"
+    },{
+        icon:"cube",
+        color:"#c3e0dd",
+        iconColor:"#059e8f",
+        nombre:"Animación 3D"
+    },{
+        icon:"file-movie-o",
+        color:"#bae8f7",
+        iconColor:"#176c8b",
+        nombre:"Pr. Medios Aud. Dig."
+    },{
+        icon:"database",
+        color:"#c6c6c6",
+        iconColor:"#565656",
+        nombre:"Bases de Datos"
+    },{
+        icon:"android",
+        color:"#c7eae5",
+        iconColor:"#008584",
+        nombre:"Desarrollo de Ap. Mov."
+    },{
+        icon:"desktop",
+        color:"#c1df70",
+        nombre:"Pr. de Multimedia"
+    },{
+        icon:"globe",
+        color:"#a9bebf",
+        iconColor:"#003c47",
+        nombre:"Redes y Mnto."
+    },{
+        icon:"gamepad",
+        color:"#e4dd97",
+        iconColor:"#ad9923",
+        nombre:"Desarrollo Videojuegos"
+    },{
+        icon:"lightbulb-o",
+        color:"#f5e2cb",
+        iconColor:"#ea931f",
+        nombre:"Ideatic"
+    }
+]
 
 
 import TabFooter  from '../footerTab/TabFooter';
 import MainHeader from '../MainHeader/index'
-const mascota = require("../../../assets/mascota.png");
 const personaje = require("../../../assets/personaje.png");
-const cardImage = require("../../../assets/bienvenida-cover.png");
 const bg_profile = require('../../../assets/bg_profile.png');
 
 class Home extends Component {
@@ -37,80 +84,49 @@ class Home extends Component {
         }
     }
 
+    listarCategoria(){
+        let cont = 0;
+        return [0,1,2,3].map((ee,i)=><Row style={styles.col}>
+            {categorias.slice(cont, cont+=3).map((e,i)=><Col style={styles.me_col}>
+                <TouchableOpacity style={{backgroundColor:e.color,...styles.columns}}>
+                    <Icon3 name={e.icon} style={{ color: e.iconColor,...styles.center_items,...styles.sizeIcon }} />
+                    <Text style={{color: e.iconColor,...styles.center_items}}>
+                        {e.nombre}
+                    </Text>
+                </TouchableOpacity></Col>)}
+        </Row>)
+
+
+
+
+    }
+
   render() {
     return (
-      <Container style={styles.container}>
-          <ImageBackground source={bg_profile} style={styles.head}>
-              <MainHeader Navigate={this.props.navigation}/>
-              <View style={styles.container_text_intro}>
+
+        <Container style={styles.container}>
+            <Content>
+            <Image source={bg_profile} style={styles.head} />
+
+            <MainHeader Navigate={this.props.navigation}/>
+            <View style={styles.container_text_intro}>
                 <H1 style={styles.text_head_h1}>SENASOFT 2019</H1>
-                  <Text style={styles.text_head_p}>SENASOFT es el mayor encuentro de tecnología realizado por el SENA, como iniciativa de la red de conocimiento en informática, Diseño Y Desarrollo de Software.</Text>
-              </View>
-              <Thumbnail source={personaje} style={styles.personaje}/>
-          </ImageBackground>
-          <Content padder>
+                <Text style={styles.text_head_p}>SENASOFT es el mayor encuentro de tecnología realizado por el SENA, como iniciativa de la red de conocimiento en informática, Diseño Y Desarrollo de Software.</Text>
+                <Thumbnail source={personaje} style={styles.personaje}/>
+            </View>
+            <View style={styles.categoria}>
 
-              <Card style={styles.mb}>
-                  <CardItem>
-                      <Left>
-                          <Thumbnail source={mascota} />
-                          <Body>
-                          <Text>Bienvenidos</Text>
-                          <Text note>Introducción</Text>
-                          </Body>
-                      </Left>
-                  </CardItem>
+                <H3 style={styles.tittle}>CATEGORIAS</H3>
+                <Grid style={styles.mt}>
+                    {this.listarCategoria()}
+                </Grid>
 
-                  <CardItem cardBody>
-                      <Image
-                          style={{
-                              resizeMode: "cover",
-                              width: null,
-                              height: 200,
-                              flex: 1
-                          }}
-                          source={cardImage}
-                      />
-                  </CardItem>
 
-                  <CardItem style={{ paddingVertical: 0 }}>
-                      <Body></Body>
+            </View>
+            </Content>
+            <TabFooter Navigate={this.props.navigation}/>
+        </Container>
 
-                      <Right>
-                          <Button transparent>
-                              <Icon active name="eye" />
-                              <Text>Ver</Text>
-                          </Button>
-                      </Right>
-                  </CardItem>
-              </Card>
-              <Grid style={styles.mt}>
-
-                  <Row>
-                      <Col style={{ backgroundColor: "#00CE9F" }} >
-                          <Button
-                              style={{ backgroundColor: "#6FAF98", alignSelf: "center" }}
-                              onPress={() => this.props.navigation.navigate('Proyecto')}
-                          >
-                              <Text>Lets Go!</Text>
-                          </Button>
-                      </Col>
-                      <Col style={{ backgroundColor: "#635DB7" }} >
-                          <Button
-                              style={{ backgroundColor: "#6FAF98", alignSelf: "center" }}
-                              onPress={() => this.props.navigation.openDrawer()}
-                          >
-                              <Text>Lets Goo!</Text>
-                          </Button>
-                      </Col>
-
-                  </Row>
-
-              </Grid>
-          </Content>
-          <TabFooter Navigate={this.props.navigation}/>
-
-      </Container>
     );
   }
 }

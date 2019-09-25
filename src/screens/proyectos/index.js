@@ -7,57 +7,23 @@ import {
     Content,
     List,
     ListItem,
-    Thumbnail, Text,Body
+    Thumbnail, Text, Body, CardItem, Icon, Card, H3
 } from 'native-base';
 
 import {DrawerActions } from 'react-navigation';
 
+import Icon2 from "react-native-vector-icons/Entypo";
 import {connect} from 'react-redux';
-import {FlatList} from 'react-native';
+import {FlatList, Image} from 'react-native';
 import {getProjects} from '../../redux/actions/proyecto';
 
-const sankhadeep = require("../../../assets/contacts/sankhadeep.png");
-const supriya = require("../../../assets/contacts/supriya.png");
-const himanshu = require("../../../assets/contacts/himanshu.png");
-const shweta = require("../../../assets/contacts/shweta.png");
-const shruti = require("../../../assets/contacts/shruti.png");
-const shivraj = require("../../../assets/contacts/shivraj.png");
+
 import styles from "./styles";
-const datas = [
-    {
-        img: sankhadeep,
-        text: "Sankhadeep",
-        note: "Its time to build a difference . ."
-    },
-    {
-        img: supriya,
-        text: "Supriya",
-        note: "One needs courage to be happy and smiling all time . . "
-    },
-    {
-        img: shivraj,
-        text: "Shivraj",
-        note: "Time changes everything . ."
-    },
-    {
-        img: shruti,
-        text: "Shruti",
-        note: "The biggest risk is a missed opportunity !!"
-    },
-    {
-        img: himanshu,
-        text: "Himanshu",
-        note: "Live a life style that matchs your vision"
-    },
-    {
-        img: shweta,
-        text: "Shweta",
-        note: "Failure is temporary, giving up makes it permanent"
-    }
-];
+import stylesHome from "../home/styles";
 
 import MainHeader from '../MainHeader/index';
 import TabFooter from "../footerTab/TabFooter";
+const bg_header = require('../../../assets/bg_header.png');
 
 class Proyecto extends Component{
 
@@ -93,29 +59,43 @@ class Proyecto extends Component{
         console.log(this.state.proyectos);
         return(
             <Container style={styles.container}>
-                <MainHeader Navigate={this.props.navigation}/>
-                <Content>
-
+                <Image source={bg_header} style={{flex: 1,
+                    resizeMode: 'cover', // or 'stretch',
+                    width:"100%",
+                    height:80,
+                    position:'absolute'}} />
+                <MainHeader Navigate={this.props.navigation} transparent='true'/>
+                <Content padder={4}>
+                    <H3 style={{marginVertical:30,...stylesHome.tittle}}>PROYECTOS GANADORES</H3>
                     <FlatList
                         data={this.state.proyectos}
-                        renderItem={({item}) => <ListItem thumbnail>
-                            <Left>
-                                <Text>Image</Text>
-                            </Left>
-                            <Body>
-                            <Text>
-                                {item.arhivo_proyecto_centro}
-                            </Text>
-                            <Text numberOfLines={1} note>
-                                {item.arhivo_proyecto_centro}
-                            </Text>
-                            </Body>
-                            <Right>
-                                <Button transparent>
-                                    <Text>Ver</Text>
-                                </Button>
-                            </Right>
-                        </ListItem>}
+                        renderItem={({item}) => <Card style={styles.mb}>
+                            <CardItem bordered>
+                                <Left>
+                                    <Icon2 active name="medal" style={{color:"#ffc200"}} size={40} />
+                                    <Body>
+                                    <Text>{item.nombre_centro}</Text>
+                                    <Text note>{item.nombre_regional}</Text>
+                                    </Body>
+                                </Left>
+                            </CardItem>
+
+                            <CardItem>
+                                <Body>
+                                <Text>
+                                    {item.descripcion}
+                                </Text>
+                                </Body>
+                            </CardItem>
+                            <CardItem style={{ paddingVertical: 0 }}>
+                                <Left>
+                                    <Button dark transparent>
+                                        <Icon name="star" />
+                                        <Text>{item.puntaje} PUNTOS</Text>
+                                    </Button>
+                                </Left>
+                            </CardItem>
+                        </Card>}
                     />
                 </Content>
                 <TabFooter Navigate={this.props.navigation}/>

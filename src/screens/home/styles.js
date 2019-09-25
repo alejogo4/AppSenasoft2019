@@ -40,17 +40,37 @@ export default {
         marginTop:20,
     },
     head:{
-        width: '100%',
-        height: '70%',
-        resizeMode:'bottom',
-        position:'relative',
-        borderWidth:1,
-        borderColor : "red",
+        flex: 1,
+        resizeMode: 'cover', // or 'stretch',
+        width:"100%",
+        height:280,
+        position:'absolute'
     },
+    col:{
+        alignItems: "center",
+        paddingHorizontal: 5,
+        paddingVertical: 5
+    },
+    center_items:{
+      textAlign:"center"
+    },
+    sizeIcon:{
+      fontSize: 30,
+        marginBottom:5
+    },
+    columns:{
+        width:100,
+        paddingHorizontal: 5,
+        paddingVertical: 30,
+        borderRadius: 20,
+    }
+    ,
     container_text_intro:{
       flex:0.5,
         width:"70%",
-        paddingLeft: 10
+        paddingLeft: 10,
+        paddingBottom:60,
+        position:"relative"
     },
     text_head_h1:{
       color:"#f8ffff",
@@ -67,9 +87,19 @@ export default {
         width:150,
         height:170,
         position:'absolute',
-        right:-30,
-        top:140,
+        right:-140,
+        bottom:-30,
         resizeMode:"stretch"
+    },
+    categoria:{
+        flex: 1,
+        paddingLeft: 10,
+        marginTop:55
+    },
+    tittle:{
+      fontWeight: "bold",
+        fontFamily: "Roboto_medium",
+        color:"#066578"
     },
     primaryColor:{
         backgroundColor: "#FFFFFF",

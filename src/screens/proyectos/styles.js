@@ -8,5 +8,8 @@ export default {
   },
   mb: {
     marginBottom: 15
-  }
+  },
+    padding_content:{
+        marginBottom: 15
+    }
 };

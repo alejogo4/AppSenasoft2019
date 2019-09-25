@@ -13,8 +13,12 @@ export default {
   },
   iconText: {
     fontSize: 12,
-      color: "#C1C1C3"
+      color: "#C1C1C3",
+      textAlign: "center"
   },
+    me_col:{
+        paddingLeft: 5
+    },
   icon: {
     width: 45,
     height: 45,
