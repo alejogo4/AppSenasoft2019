@@ -16,7 +16,8 @@ import { validarLogin, getToken, loading } from '../../redux/actions/login';
 
 import styles from "./../home/styles";
 const bg_login = require("../../../assets/bg_login.png");
-const img_login = require("../../../assets/contacts/himanshu.png");
+const img_login = require("../../../assets/personaje_login.png");
+
 
 class Login extends Component {
 
@@ -73,7 +74,8 @@ class Login extends Component {
         return (
             <Container style={styles.container}>
                 <ImageBackground source={bg_login} style={{width: '100%', height: '100%'}}>
-                    <Header style={{ backgroundColor: "#207CA0" }}
+
+                    <Header transparent
                             androidStatusBarColor="#1B687F"
                             iosBarStyle="light-content">
                         <Left>
@@ -82,7 +84,7 @@ class Login extends Component {
                             </Button>
                         </Left>
                         <Body>
-                        <Title>Login</Title>
+                        <Title style={{fontSize:22}}>Iniciar Sesión</Title>
                         </Body>
                         <Right/>
                     </Header>

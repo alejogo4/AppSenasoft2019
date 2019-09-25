@@ -143,8 +143,9 @@ import NHDatePicker from "./screens/datepicker/";
 import Login from "./screens/login";
 import Proyecto from './screens/proyectos';
 import Profile from './screens/profile';
-import Refrigerios from './screens/refrigerios'
-import Equipaje from './screens/equipaje'
+import Refrigerios from './screens/refrigerios';
+import Equipaje from './screens/equipaje';
+import Informacion from './screens/information';
 //Importaciones propias
 
 
@@ -180,7 +181,8 @@ const Drawer = createDrawerNavigator(
     Equipaje: { screen: Equipaje },
       Proyecto:{screen:Proyecto},
     Profile:{screen:Profile},
-    Refrigerios:{screen:Refrigerios}
+    Refrigerios:{screen:Refrigerios},
+      Informacion:{screen:Informacion}
   },
   {
     initialRouteName: "Home",
@@ -320,7 +322,8 @@ const AppNavigator = createStackNavigator(
     Login:{screen:Login},
     Proyecto:{screen:Proyecto},
     Profile:{screen:Profile},
-    Refrigerios:{screen:Refrigerios}
+    Refrigerios:{screen:Refrigerios},
+      Informacion:{screen:Informacion}
 
   },
   {

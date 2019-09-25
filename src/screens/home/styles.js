@@ -122,6 +122,8 @@ export default {
         marginLeft: deviceWidth / 4,
         marginTop:20,
         marginBottom:20,
+        borderColor:"#fff",
+        borderWidth:0.7
     },
     secondColor:{
         backgroundColor: "#1B687F",
