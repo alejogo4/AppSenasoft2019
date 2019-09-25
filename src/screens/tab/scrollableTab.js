@@ -51,6 +51,24 @@ class BasicTab extends Component {
             <TabFive />
           </Tab>
         </Tabs>
+
+          <Tabs renderTabBar={() => <ScrollableTab />}>
+              <Tab heading="Tab1">
+                  <TabOne />
+              </Tab>
+              <Tab heading="Tab2">
+                  <TabTwo />
+              </Tab>
+              <Tab heading="Tab3">
+                  <TabThree />
+              </Tab>
+              <Tab heading="Tab4">
+                  <TabFour />
+              </Tab>
+              <Tab heading="Tab5">
+                  <TabFive />
+              </Tab>
+          </Tabs>
       </Container>
     );
   }

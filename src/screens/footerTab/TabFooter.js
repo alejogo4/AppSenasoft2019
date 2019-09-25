@@ -62,6 +62,7 @@ class TabFooter extends Component {
             tab3: true,
         };
         this.props.changeTab(data);
+        this.props.Navigate.navigate('Informacion');
     }
 
     render(){

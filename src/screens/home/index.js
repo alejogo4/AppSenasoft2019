@@ -116,7 +116,7 @@ class Home extends Component {
             </View>
             <View style={styles.categoria}>
 
-                <H3 style={styles.tittle}>CATEGORIAS</H3>
+                <H3 style={styles.tittle}>CATEGORÍAS</H3>
                 <Grid style={styles.mt}>
                     {this.listarCategoria()}
                 </Grid>

@@ -3,14 +3,10 @@ import {
     Container,
     Left,
     Button,
-    Right,
     Content,
-    List,
-    ListItem,
-    Thumbnail, Text, Body, CardItem, Icon, Card, H3
+     Text, Body, CardItem, Icon, Card, H3
 } from 'native-base';
 
-import {DrawerActions } from 'react-navigation';
 
 import Icon2 from "react-native-vector-icons/Entypo";
 import {connect} from 'react-redux';
