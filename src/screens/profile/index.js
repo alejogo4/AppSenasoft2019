@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Image, ImageBackground} from "react-native";
+import {Image, ImageBackground, ScrollView} from "react-native";
 import {
     Container,
     Button,
@@ -11,8 +11,7 @@ import {
     CardItem,
     Thumbnail,
     Card,
-    Content, Header, Title,
-
+    Content, Header, Title, View
 } from "native-base";
 
 import styles from "./../home/styles";
@@ -31,7 +30,7 @@ class Profile extends Component {
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this._consultaUser();
     }
 
@@ -40,15 +39,39 @@ class Profile extends Component {
 
     }
 
+    listarEquipo(){
+        return this.props.user.equipo == null ? <Text></Text>
+        :
+         this.props.user.equipo.map((e, i)=><View>
+            <Text>{e.documento}</Text>
+            <Text>{e.nombres} {e.apellidos}</Text>
+            <Text>{e.correo_principal}</Text>
+            <Text>{e.telefono}</Text>
+            <Text>{e.nombre_regional}</Text>
+            <Text>{e.nombre_centro}</Text>
+            <Image source={{uri: 'https://senasoft.fabricadesoftware.co/archivos/fotos/'+e.foto}} style={{height: 100, width: 100, resizeMode: 'stretch'}}/>
+        </View>)
+    }
+
     render() {
         return (
             <Container style={styles.container}>
                 <ImageBackground source={bg_profile} style={{width: '100%', height: '70%'}}>
                     <MainHeader Navigate={this.props.navigation} />
-                    <Text>{this.props.user==null?"":this.props.user.name}</Text>
-                    <Text>{this.props.user==null?"":this.props.user.email}</Text>
+                    <Text>{this.props.user==null?"":this.props.user.user.name}</Text>
+                    <Text>{this.props.user==null?"":this.props.user.user.email}</Text>
+                    <Text>{this.props.user==null?"":(this.props.user.persona != null ? this.props.user.persona.nombre_regional : "")}</Text>
+                    <Text>{this.props.user==null?"":(this.props.user.persona != null ? this.props.user.persona.nombre_centro : "")}</Text>
                 </ImageBackground>
-
+                <ScrollView>
+                {this.props.user != null ? 
+                    <View>
+                        <Text>Equipo</Text>
+                        {this.listarEquipo()}
+                    </View>
+                : <Text></Text>}
+                </ScrollView>
+                
             </Container>
         );
     }

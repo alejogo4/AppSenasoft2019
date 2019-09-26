@@ -72,7 +72,7 @@ const guardarToken = (data) => dispatch => {
 }
 
 const guardarDatosUsuario = (data) => dispatch => {
-    AsyncStorage.setItem('user', JSON.stringify(data.user))
+    AsyncStorage.setItem('user', JSON.stringify(data))
         .then((data) => {
             dispatch(loading(false));
         })
