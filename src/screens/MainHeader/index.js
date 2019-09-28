@@ -47,18 +47,25 @@ class MainHeader extends Component{
                     <Body>
                     <Title></Title>
                     </Body>
-                    <Right>
+
                         {this.props.token == null || this.props.token == undefined ?
-                            <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
-                                <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
-                            </Button>
+                            <Right>
+                                <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
+                                    <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
+                                </Button>
+                            </Right>
                             :
-                            <Button transparent onPress={() => this.props.salir()}>
-                                <Icon name="power" style={{ color: "#ffffff" }}/>
+                            <Right>
+                                <Button transparent onPress={() => this.props.Navigate.navigate("Profile")}>
+                                    <Icon name="person" style={{ color: "#ffffff" }}/>
+                                </Button>
+                                <Button transparent onPress={() => this.props.salir()}>
+                                    <Icon name="power" style={{ color: "#ffffff" }}/>
+                                </Button>
+                            </Right>
 
-                            </Button>}
+                        }
 
-                    </Right>
                 </Header>
             )
         }else{
@@ -76,18 +83,23 @@ class MainHeader extends Component{
                     <Body>
                     <Title></Title>
                     </Body>
-                    <Right>
-                        {this.props.token == null || this.props.token == undefined ?
-                            <Button transparent onPress={() => Navigate.navigate('Login')}>
+                    {this.props.token == null || this.props.token == undefined ?
+                        <Right>
+                            <Button transparent onPress={() => this.props.Navigate.navigate("Profile")}>
                                 <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
                             </Button>
-                            :
+                        </Right>
+                        :
+                        <Right>
+                            <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
+                                <Icon name="person" style={{ color: "#ffffff" }}/>
+                            </Button>
                             <Button transparent onPress={() => this.props.salir()}>
-                                <Icon name="power" style={{ color: "#ffffff" }} />
+                                <Icon name="power" style={{ color: "#ffffff" }}/>
+                            </Button>
+                        </Right>
 
-                            </Button>}
-
-                    </Right>
+                    }
                 </Header>
             )
         }

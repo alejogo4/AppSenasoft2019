@@ -11,5 +11,24 @@ export default {
   },
     padding_content:{
         marginBottom: 15
+    },
+    tabHead:{
+        backgroundColor:"transparent",
+        overflow:'hidden'
+    },
+    paddingTab:{
+      paddingHorizontal:10,
+        paddingVertical:10
+    },pTab:{
+      marginBottom:15,
+        color:"838383",
+    },refriColor:{
+      backgroundColor:"#c3e0dd"
+    },
+    refriTextColor:{
+      color:"#059e8f"
+    },
+    colorCard:{
+        color:"#066578"
     }
 };

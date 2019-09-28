@@ -1,4 +1,4 @@
-import {GET_PROJECTS,ERROR} from '../actions/proyecto';
+import {GET_PROJECTS,ERROR,LOADING} from '../actions/proyecto';
 
 
 export const ProjectsReducer = (state = {}, action) => {
@@ -7,6 +7,8 @@ export const ProjectsReducer = (state = {}, action) => {
             return { ...state, projects: action.projects };
         case ERROR:
             return { ...state, error: action.error };
+        case LOADING:
+            return { ...state, loading: action.isLoading };
         default:
             return state;
     }

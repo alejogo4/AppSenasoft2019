@@ -84,7 +84,7 @@ class TabFooter extends Component {
                     <Button active={this.state.tabs.tab3} onPress={() => this.toggleTab3()} style={{ backgroundColor: this.state.tabs.tab3 ? "#f7f7f7" : "transparent"}}>
                         <IconOutline active name="plus" size={20} style={{ color: this.state.tabs.tab3 ? "#ec7d00" : "#919191"}}  />
                         <Text numberOfLines={1} style={{ color: this.state.tabs.tab3 ? "#ec7d00" : "#919191"}}>
-                            Información
+                            Info
                         </Text>
                     </Button>
                 </FooterTab>

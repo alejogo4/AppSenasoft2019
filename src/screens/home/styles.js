@@ -72,6 +72,18 @@ export default {
         paddingBottom:60,
         position:"relative"
     },
+    container_text_profile:{
+        flex:0.5,
+        width:"100%",
+        paddingLeft: 10,
+        paddingRight:10,
+        paddingBottom:30,
+        position:"relative",
+
+    },
+    photo_profile:{
+
+    },
     text_head_h1:{
       color:"#f8ffff",
         textAlign: "left",
@@ -97,9 +109,14 @@ export default {
         marginTop:55
     },
     tittle:{
-      fontWeight: "bold",
+        fontWeight: "bold",
         fontFamily: "Roboto_medium",
-        color:"#066578"
+        color:"#066578",
+    },tittle_profile:{
+        fontWeight: "bold",
+        fontFamily: "Roboto_medium",
+        color:"#066578",
+        paddingBottom:20
     },
     primaryColor:{
         backgroundColor: "#FFFFFF",

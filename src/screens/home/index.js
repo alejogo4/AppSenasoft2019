@@ -4,7 +4,6 @@ import {
     Container,
     Text,
     Thumbnail,
-
     Content,
     H1,
     H3
