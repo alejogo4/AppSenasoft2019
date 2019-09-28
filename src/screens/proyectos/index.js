@@ -50,12 +50,7 @@ class Proyecto extends Component{
         })
     }
 
-    loading(){
-        console.log(this.props.isLoading);
-        if(this.props.isLoading == null || this.props.isLoading != false){
-            return (<Text>Cargando</Text>)
-        }
-    }
+
 
 
     render(){
@@ -69,8 +64,8 @@ class Proyecto extends Component{
                 <MainHeader Navigate={this.props.navigation} transparent='true'/>
                 <Content padder>
                     <H3 style={{marginVertical:30,...stylesHome.tittle}}>PROYECTOS GANADORES</H3>
-                    {this.loading()}
-                    <FlatList
+
+                    {this.props.proyectos != null? <FlatList
                         data={this.state.proyectos}
                         renderItem={({item}) => <Card style={styles.mb}>
                             <CardItem bordered>
@@ -99,7 +94,8 @@ class Proyecto extends Component{
                                 </Left>
                             </CardItem>
                         </Card>}
-                    />
+                    />:<Text>Cargando...</Text>}
+
                 </Content>
                 <TabFooter Navigate={this.props.navigation}/>
             </Container>

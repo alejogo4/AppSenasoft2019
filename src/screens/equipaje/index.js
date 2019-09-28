@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {
-  StyleSheet,
-  View,
-  Platform,
-  TouchableOpacity,
-  PermissionsAndroid,
-  Modal,
-  TextInput
+    StyleSheet,
+    View,
+    Platform,
+    TouchableOpacity,
+    PermissionsAndroid,
+    Modal,
+    TextInput, Image
 } from 'react-native';
 
 import {
@@ -31,6 +31,7 @@ import {CameraKitCameraScreen} from 'react-native-camera-kit';
 import MainHeader from './../MainHeader';
 import FormIngreso from './formIngreso';
 import FormSalida from './formSalida';
+const bg_header = require('../../../assets/bg_header.png');
 
 import {contar,ingreso,salida} from '../../redux/actions/equipaje';
 
@@ -143,6 +144,11 @@ class Equipaje extends Component {
     return (
         this.state.scanner === false ?
         <Grid>
+            <Image source={bg_header} style={{flex: 1,
+                resizeMode: 'cover', // or 'stretch',
+                width:"100%",
+                height:80,
+                position:'absolute'}} />
             <MainHeader Navigate={this.props.navigation}/>
             <Row style={{height:40, marginTop:10, alignItems:'center'}}>
                 <Col size={60} style={{alignItems:'center'}}>

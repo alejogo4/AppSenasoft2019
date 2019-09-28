@@ -42,33 +42,35 @@ class Profile extends Component {
 
     listarEquipo(){
 
-        console.log(this.props.user.equipo);
-        return this.props.user.equipo == null ? <Text></Text>
+        return this.props.user.equipo == null || this.props.user.equipo.length == 0 ? <Text></Text>
         :
          this.props.user.equipo.map((e, i)=>
-             <Card style={styles.mb}>
-                 <CardItem bordered>
-                     <Left>
-                         {this.props.user != null ?
-                             <Thumbnail source={{uri: 'https://senasoft.fabricadesoftware.co/images/fotos_app/'+e.foto}} />
-                             : <Text></Text>}
+             <View style={styles.container_text_profile}>
+                 <H3 style={styles.tittle_profile}>COMPAÑERO(S) DE COMPETENCIA</H3>
+                 <Card style={styles.mb}>
+                     <CardItem bordered>
+                         <Left>
+                             {this.props.user != null ?
+                                 <Thumbnail source={{uri: 'https://senasoft.fabricadesoftware.co/images/fotos_app/'+e.foto}} />
+                                 : <Text></Text>}
 
+                             <Body>
+                             <Text>{e.nombres} {e.apellidos}</Text>
+                             <Text note>{e.correo_principal}</Text>
+                             </Body>
+                         </Left>
+                     </CardItem>
+
+                     <CardItem>
                          <Body>
-                         <Text>{e.nombres} {e.apellidos}</Text>
-                         <Text note>{e.correo_principal}</Text>
+
+                         <Text>
+                             {e.nombre_regional} - {e.nombre_centro}
+                         </Text>
                          </Body>
-                     </Left>
-                 </CardItem>
-
-                 <CardItem>
-                     <Body>
-
-                     <Text>
-                         {e.nombre_regional} - {e.nombre_centro}
-                     </Text>
-                     </Body>
-                 </CardItem>
-             </Card>
+                     </CardItem>
+                 </Card>
+             </View>
              )
     }
 
@@ -81,7 +83,7 @@ class Profile extends Component {
                     <MainHeader Navigate={this.props.navigation}/>
                     <View style={styles.container_text_profile}>
                         {this.props.user != null ?
-                            <Image source={{uri: `https://senasoft.fabricadesoftware.co/images/fotos_app/${this.props.user.user.documento}_foto.jpg`}} style={styles.photo_log}/>
+                            <Image source={{uri: 'https://senasoft.fabricadesoftware.co/images/fotos_app/'+this.props.user.persona.foto}} style={styles.photo_log}/>
                             : <Text></Text>}
 
                     </View>
@@ -104,10 +106,9 @@ class Profile extends Component {
                         </Card>
 
                     </View>
-                    <View style={styles.container_text_profile}>
-                        <H3 style={styles.tittle_profile}>COMPAÑERO(S) DE COMPETENCIA</H3>
-                        {this.listarEquipo()}
-                    </View>
+                    {this.props.user != null ? this.listarEquipo():<Text>Cargando...</Text>}
+
+
                 </Content>
                 <TabFooter Navigate={this.props.navigation}/>
             </Container>

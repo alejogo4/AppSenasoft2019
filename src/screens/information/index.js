@@ -312,6 +312,22 @@ class Informacion extends Component{
                             </Card>
                         </Tab>
                     </Tabs>
+
+                    <Card >
+                        <CardItem header bordered first>
+                            <Text style={styles.colorCard}>Desarrollado por</Text>
+                        </CardItem>
+                        <CardItem bordered>
+                            <Body>
+                            <Text>
+                               Juan David Ramírez Londoño
+                            </Text>
+                            <Text>
+                                Alejandro Giraldo Duque
+                            </Text>
+                            </Body>
+                        </CardItem>
+                    </Card>
                 </Content>
                 <TabFooter Navigate={this.props.navigation}/>
             </Container>

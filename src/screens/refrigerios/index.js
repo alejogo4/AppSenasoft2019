@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Linking,
     ScrollView,
-    PermissionsAndroid,
+    PermissionsAndroid, Image,
 } from 'react-native';
 
 import {
@@ -25,7 +25,7 @@ import {validarRefrigerio} from '../../redux/actions/refrigerio'
 import { connect } from 'react-redux';
 import styles from "../Header/styles";
 import MainHeader from "../MainHeader";
-
+const bg_header = require('../../../assets/bg_header.png');
 
 class Refrigerios extends Component {
     constructor() {
@@ -100,6 +100,11 @@ class Refrigerios extends Component {
 
             return (
                 <ScrollView>
+                    <Image source={bg_header} style={{flex: 1,
+                        resizeMode: 'cover', // or 'stretch',
+                        width:"100%",
+                        height:80,
+                        position:'absolute'}} />
                     <MainHeader Navigate={this.props.navigation}/>
                     <Grid>
                         <Row style={{height:40, marginTop:10}}>
