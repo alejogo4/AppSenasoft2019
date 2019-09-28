@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-import {Image, View, TouchableOpacity} from "react-native";
+import {Image, View, TouchableOpacity, TextInput, Modal,ScrollView} from "react-native";
 import {
     Container,
     Text,
     Thumbnail,
     Content,
     H1,
-    H3
+    H3, Button, ScrollableTab, Tab, Card, CardItem, Body, Tabs,
 
 } from "native-base";
 
 import Icon3 from 'react-native-vector-icons/FontAwesome';
 
 import styles from "./styles";
+import stylesTab from "../information/styles";
 
 import { Grid, Row, Col } from "react-native-easy-grid";
 const categorias = [
@@ -20,51 +21,101 @@ const categorias = [
         icon:"file-code-o",
         color:"#dfcdfa",
         iconColor:"#6d3f71",
-        nombre:"Desarrollo Web"
+        nombre:"Desarrollo Web",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.",
+        lider:"Héctor Darío Maya Ramírez",
+        cat:0
     },{
         icon:"sitemap",
         color:"#d1e0e5",
         iconColor:"#61a4bc",
-        nombre:"Desarrollo Algoritmos"
+        nombre:"Desarrollo Algoritmos",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes\n" +
+            "de trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la\n" +
+            "eficiencia, la productividad y la competitividad de los participantes.\n",
+        lider:"Jhonnys Arturo Rodríguez Payares",
+        cat:1
     },{
         icon:"cube",
         color:"#c3e0dd",
         iconColor:"#059e8f",
-        nombre:"Animación 3D"
+        nombre:"Animación 3D",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.",
+        lider:"Andrés Felipe Agudelo González",
+        cat:2
     },{
         icon:"file-movie-o",
         color:"#bae8f7",
         iconColor:"#176c8b",
-        nombre:"Pr. Medios Aud. Dig."
+        nombre:"Pr. Medios Aud. Dig.",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.",
+        lider:"Luis Fernando Arango Marín",
+        cat:3
     },{
         icon:"database",
         color:"#c6c6c6",
         iconColor:"#565656",
-        nombre:"Bases de Datos"
+        nombre:"Bases de Datos",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.\n",
+        lider:"Evis Licet Vargas Barrios",
+        cat:4
     },{
         icon:"android",
         color:"#c7eae5",
         iconColor:"#008584",
-        nombre:"Desarrollo de Ap. Mov."
+        nombre:"Desarrollo de Ap. Mov.",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en\n" +
+            "ambientes de trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y\n" +
+            "fomentan la eficiencia, la productividad y la competitividad de los participantes.",
+        lider:"Juan David Ramírez Londoño",
+        cat:5
     },{
         icon:"desktop",
         color:"#c1df70",
-        nombre:"Pr. de Multimedia"
+        nombre:"Pr. de Multimedia",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.",
+        lider:"Danny Alexander Celis Bayona",
+        cat:6
     },{
         icon:"globe",
         color:"#a9bebf",
         iconColor:"#003c47",
-        nombre:"Redes y Mnto."
+        nombre:"Redes y Mnto.",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en\n" +
+            "ambientes de trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y\n" +
+            "fomentan la eficiencia, la productividad y la competitividad de los participantes.\n",
+        lider:"Andrés Medranda Rodríguez- Aiscardo Mosquera\n",
+        cat:7
     },{
         icon:"gamepad",
         color:"#e4dd97",
         iconColor:"#ad9923",
-        nombre:"Desarrollo Videojuegos"
+        nombre:"Desarrollo Videojuegos",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la eficiencia,\n" +
+            "la productividad y la competitividad de los participantes.\n",
+        lider:"Alejandro Díaz Jaramillo",
+        cat:8
     },{
         icon:"lightbulb-o",
         color:"#f5e2cb",
         iconColor:"#ea931f",
-        nombre:"Ideatic"
+        nombre:"Ideatic",
+        descripcion:"Desarrollar soluciones tecnológicas a problemas reales del sector productivo, en ambientes de\n" +
+            "trabajo colaborativo e interdisciplinario, que simulan el contexto laboral y fomentan la\n" +
+            "eficiencia, la productividad y la competitividad de los participantes.",
+        lider:"Dorian Sully Múnera Rúa",
+        cat:9
     }
 ]
 
@@ -79,24 +130,33 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state ={
-
+            modal: false,
+            indice:0
         }
+    }
+
+    abrirInfoCategoria(indice){
+        console.log(indice);
+        this.setState ({modal: true});
+        this.setState ({indice: indice});
+    }
+
+    cerrarModal(){
+        this.setState ({modal: false});
     }
 
     listarCategoria(){
         let cont = 0;
+
         return [0,1,2,3].map((ee,i)=><Row style={styles.col}>
             {categorias.slice(cont, cont+=3).map((e,i)=><Col style={styles.me_col}>
-                <TouchableOpacity style={{backgroundColor:e.color,...styles.columns}}>
+                <TouchableOpacity onPress={()=>{this.abrirInfoCategoria(e.cat)}} style={{backgroundColor:e.color,...styles.columns}}>
                     <Icon3 name={e.icon} style={{ color: e.iconColor,...styles.center_items,...styles.sizeIcon }} />
                     <Text style={{color: e.iconColor,...styles.center_items}}>
                         {e.nombre}
                     </Text>
                 </TouchableOpacity></Col>)}
         </Row>)
-
-
-
 
     }
 
@@ -119,9 +179,61 @@ class Home extends Component {
                 <Grid style={styles.mt}>
                     {this.listarCategoria()}
                 </Grid>
-
-
             </View>
+                {this.state.modal ?<Modal
+                    animationType="fade"
+                    transparent={true}
+                    visible={this.state.modal}
+                    style={{flex:1}}
+                    onRequestClose={()=>this.cerrarModal()}
+                >
+                    <ScrollView style={{flex:1}}>
+                        <ScrollView style={{flex:1,flexDirection: 'column',padding: 30, paddingTop:60, backgroundColor: categorias[this.state.indice].color}}>
+                            <Text style={{color: categorias[this.state.indice].iconColor, fontSize:25}}>{categorias[this.state.indice].nombre.toUpperCase()}</Text>
+                            <Tabs style={stylesTab.tabHead}  tabBarUnderlineStyle={{ backgroundColor: categorias[this.state.indice].iconColor }} renderTabBar={() => <ScrollableTab style={stylesTab.tabHead} />}>
+                                <Tab  style={stylesTab.paddingTab} activeTextStyle={{ color: categorias[this.state.indice].iconColor, fontWeight: 'bold' }} textStyle={{ color: '#000', fontSize: 12 }} tabStyle={{ backgroundColor: 'transparent' }} activeTabStyle={{ backgroundColor: 'transparent' }}  heading="Habilidad.">
+                                    <Card >
+                                        <CardItem header bordered first>
+                                            <Text style={{...stylesTab.colorCard,color: categorias[this.state.indice].iconColor}}>Objetivo</Text>
+                                        </CardItem>
+                                        <CardItem bordered>
+                                            <Body>
+                                            <Text>
+                                                {categorias[this.state.indice].descripcion}
+                                            </Text>
+                                            </Body>
+                                        </CardItem>
+                                        <CardItem header bordered first>
+                                            <Text style={{...stylesTab.colorCard,color: categorias[this.state.indice].iconColor}}>Lider Técnico</Text>
+                                        </CardItem>
+                                        <CardItem bordered>
+                                            <Body>
+                                            <Text>
+                                                {categorias[this.state.indice].lider}.
+                                            </Text>
+                                            </Body>
+                                        </CardItem>
+
+                                    </Card>
+                                </Tab>
+                                <Tab  style={stylesTab.paddingTab} activeTextStyle={{ color: categorias[this.state.indice].iconColor, fontWeight: 'bold' }} textStyle={{ color: '#000', fontSize: 12 }} tabStyle={{ backgroundColor: 'transparent' }} activeTabStyle={{ backgroundColor: 'transparent' }}  heading="Puntajes.">
+                                    <Text>Funcionalidad aun no esta disponible</Text>
+                                </Tab>
+
+                            </Tabs>
+
+                            <Button
+                                style={{marginTop: 10, marginBottom:40}}
+                                success
+                                block
+                                onPress={()=>this.cerrarModal()}
+                                >
+                                <Text>Cerrar</Text>
+                            </Button>
+                        </ScrollView>
+                    </ScrollView>
+                </Modal>  : <Text/>}
+
             </Content>
             <TabFooter Navigate={this.props.navigation}/>
         </Container>
