@@ -1,10 +1,13 @@
-const URL = 'https://senasoft.fabricadesoftware.co/api';
+import { URL, TOKEN } from './URL';
 
-export const sendRefrigerio = data => {
+export const sendRefrigerio = async data => {
+    const token = await TOKEN();
+
     let request = {
         method: 'POST',
         body:JSON.stringify(data),
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };

@@ -67,10 +67,10 @@ class Proyecto extends Component{
 
                     {this.props.proyectos != null? <FlatList
                         data={this.state.proyectos}
-                        renderItem={({item}) => <Card style={styles.mb}>
+                        renderItem={({item, i}) => <Card key={i} style={styles.mb}>
                             <CardItem bordered>
                                 <Left>
-                                    <Icon2 active name="medal" style={{color:"#ffc200"}} size={40} />
+                                    <Icon2 active name="medal" style={{color:"rgb(255, 194, 0)"}} size={40} />
                                     <Body>
                                     <Text>{item.nombre_centro}</Text>
                                     <Text note>{item.nombre_regional}</Text>

@@ -1,10 +1,13 @@
-// const URL = 'https://senasoft.fabricadesoftware.co/api';
-const URL = 'https://95a6efd5.ngrok.io/api';
+import { URL, TOKEN } from './URL';
 
-export const contarEquipaje = () => {
+export const contarEquipaje = async () => {
+
+    const token = await TOKEN();
+
     let request = {
         method: 'GET',
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };
@@ -13,11 +16,15 @@ export const contarEquipaje = () => {
         .then(response => response.json());
 }
 
-export const ingresarEquipaje = data => {
+export const ingresarEquipaje = async data => {
+
+    const token = await TOKEN();
+
     let request = {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };
@@ -25,11 +32,15 @@ export const ingresarEquipaje = data => {
         .then(response => response.json());
 }
 
-export const salidaEquipaje = data => {
+export const salidaEquipaje = async data => {
+
+    const token = await TOKEN();
+
     let request = {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };

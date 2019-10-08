@@ -75,6 +75,11 @@ class Profile extends Component {
     }
 
     render() {
+        let persona = {nombre_regional:'', nombre_centro: ''}
+        if(this.props.user){
+            persona = this.props.user.persona || {nombre_regional:'', nombre_centro: '', foto: ''}
+        }
+
         return (
             <Container style={styles.container}>
                 <Content>
@@ -83,7 +88,7 @@ class Profile extends Component {
                     <MainHeader Navigate={this.props.navigation}/>
                     <View style={styles.container_text_profile}>
                         {this.props.user != null ?
-                            <Image source={{uri: 'https://senasoft.fabricadesoftware.co/images/fotos_app/'+this.props.user.persona.foto}} style={styles.photo_log}/>
+                            <Image source={{uri: 'https://senasoft.fabricadesoftware.co/images/fotos_app/'+persona.foto}} style={styles.photo_log}/>
                             : <Text></Text>}
 
                     </View>
@@ -100,7 +105,7 @@ class Profile extends Component {
                             </CardItem>
                             <CardItem bordered>
                                 <Text>
-                                    <Text>{this.props.user==null?"":this.props.user.persona.nombre_regional} - {this.props.user==null?"":this.props.user.persona.nombre_centro}</Text>
+                                    <Text>{persona.nombre_regional} - {persona.nombre_centro}</Text>
                                 </Text>
                             </CardItem>
                         </Card>
@@ -110,7 +115,6 @@ class Profile extends Component {
 
 
                 </Content>
-                <TabFooter Navigate={this.props.navigation}/>
             </Container>
         );
     }

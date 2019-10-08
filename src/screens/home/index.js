@@ -148,9 +148,9 @@ class Home extends Component {
     listarCategoria(){
         let cont = 0;
 
-        return [0,1,2,3].map((ee,i)=><Row style={styles.col}>
-            {categorias.slice(cont, cont+=3).map((e,i)=><Col style={styles.me_col}>
-                <TouchableOpacity onPress={()=>{this.abrirInfoCategoria(e.cat)}} style={{backgroundColor:e.color,...styles.columns}}>
+        return [0,1,2,3].map((ee,ii)=><Row key={ee} style={styles.col}>
+            {categorias.slice(cont, cont+=3).map((e,i)=><Col key={i} style={styles.me_col}>
+                <TouchableOpacity  onPress={()=>{this.abrirInfoCategoria(e.cat)}} style={{backgroundColor:e.color,...styles.columns}}>
                     <Icon3 name={e.icon} style={{ color: e.iconColor,...styles.center_items,...styles.sizeIcon }} />
                     <Text style={{color: e.iconColor,...styles.center_items}}>
                         {e.nombre}

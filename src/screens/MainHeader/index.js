@@ -24,8 +24,8 @@ class MainHeader extends Component{
         this.props.consultarToken();
     }
 
-    salir(){
-        this.props.salir();
+    async salir(){
+        await this.props.salir();
         this.props.Navigate.navigate("Home");
     }
 

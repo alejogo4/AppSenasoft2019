@@ -1,4 +1,4 @@
-const URL = 'https://senasoft.fabricadesoftware.co/api';
+import { URL } from './URL';
 
 export const sendLogin = (data) => {
     let request = {

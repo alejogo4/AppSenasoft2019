@@ -27,9 +27,12 @@ const Drawer = createDrawerNavigator(
         Proyecto:{screen:Proyecto},
         Profile:{screen:Profile},
         Refrigerios:{screen:Refrigerios},
-        Informacion:{screen:Informacion}
+        Informacion:{screen:Informacion},
+        Asistencia : {screen:Home},
+        HotelTransporte: {screen:Home}
     },
     {
+        gesturesEnabled: true,
         initialRouteName: "Home",
         contentOptions: {
             activeTintColor: "#e91e63"
@@ -45,8 +48,9 @@ const AppNavigator = createStackNavigator(
         Proyecto:{screen:Proyecto},
         Profile:{screen:Profile},
         Refrigerios:{screen:Refrigerios},
-        Informacion:{screen:Informacion}
-
+        Informacion:{screen:Informacion},
+        Asistencia : {screen:Home},
+        HotelTransporte: {screen:Home}
     },
     {
         initialRouteName: "Drawer",

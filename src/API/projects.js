@@ -1,9 +1,13 @@
-const URL = 'https://senasoft.fabricadesoftware.co/api';
+import { URL, TOKEN } from './URL';
 
-export const APIprojects = () => {
+export const APIprojects = async () => {
+
+    const token = await TOKEN();
+
     let request = {
         method: 'GET',
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };
