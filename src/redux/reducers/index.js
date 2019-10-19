@@ -5,6 +5,7 @@ import { TabsReducer } from './tabs';
 import {RefrigerioReducer} from './refrigerio';
 import { EquipajeReducer } from './equipaje';
 import { HotelReducer } from './hotel';
+import { PuntajesReducer } from './puntajes';
 
 export default combineReducers({
     login: LoginReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     tabs:TabsReducer,
     refrigerio:RefrigerioReducer,
     equipaje:EquipajeReducer,
-    hotel:HotelReducer
+    hotel:HotelReducer,
+    puntaje: PuntajesReducer
 });

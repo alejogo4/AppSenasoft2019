@@ -119,6 +119,7 @@ const categorias = [
     }
 ]
 
+import PuntajeCategoria from './puntaje_categoria';
 
 import TabFooter  from '../footerTab/TabFooter';
 import MainHeader from '../MainHeader/index'
@@ -217,7 +218,7 @@ class Home extends Component {
                                     </Card>
                                 </Tab>
                                 <Tab  style={stylesTab.paddingTab} activeTextStyle={{ color: categorias[this.state.indice].iconColor, fontWeight: 'bold' }} textStyle={{ color: '#000', fontSize: 12 }} tabStyle={{ backgroundColor: 'transparent' }} activeTabStyle={{ backgroundColor: 'transparent' }}  heading="Puntajes.">
-                                    <Text>Funcionalidad aún no está disponible.</Text>
+                                    <PuntajeCategoria categoria_id="1" /> 
                                 </Tab>
 
                             </Tabs>
