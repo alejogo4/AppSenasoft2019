@@ -17,11 +17,13 @@ export const error = error => ({
 
 export const obtener_puntajes = (categoria_id) => dispatch => {
 
-    return APIpuntajes(categoria_id).then(respuesta => {
-        if (respuesta.ok) {
-            dispatch(respuesta(respuesta.data));
+    return APIpuntajes(categoria_id).then(resp => {
+        if (resp.ok) {
+            dispatch(respuesta(resp.data));
         } else {
-            dispatch(error(respuesta.datos));
+            dispatch(error(resp.data));
         }
+    }).catch(r=>{
+        console.log(e)
     });
 }

@@ -1,6 +1,6 @@
 import { URL } from './URL';
 
-export const APIpuntajes = async (id_categoria) => {
+export const APIpuntajes = (id_categoria) => {
 
     let request = {
         method: 'GET',
@@ -9,6 +9,6 @@ export const APIpuntajes = async (id_categoria) => {
         }
     };
 
-    return fetch(`${URL}/obtener/puntajes/${id_categoria}`, request)
+    return fetch(`${URL}/obtener/puntaje/${id_categoria}`, request)
         .then(response => response.json());
 }

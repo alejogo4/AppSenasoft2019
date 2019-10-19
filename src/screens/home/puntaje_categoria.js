@@ -7,49 +7,47 @@ import {
   Thumbnail,
   Body,
   Text,
+  Right,
 } from 'native-base';
 
 import {connect} from 'react-redux';
-import {obtener_puntajes} from '../../redux/actions/puntajes';
+import {obtener_puntajes, respuesta} from '../../redux/actions/puntajes';
 
 class PuntajeCategoria extends Component {
   constructor (props) {
     super (props);
+    
   }
 
   componentWillMount () {
+    this.props.resp();
     this.props.obtener_puntajes (this.props.categoria_id);
-  }
-
-  puntajes () {
-    return this.props.respuesta
-      ? this.props.respuesta.map ((e, i) => (
-          <List key={i}>
-            <ListItem itemDivider>
-              <Left>
-                <Text>Categoria 1</Text>
-              </Left>
-              <Right>
-                <Text>
-                  20%
-                </Text>
-              </Right>
-            </ListItem>
-            {e.aprendices.map ((ee, ii) => (
-              <ListItem key={ii}>
-                <Text>Kumar Pratik</Text>
-              </ListItem>
-            ))}
-
-          </List>
-        ))
-      : <Text />;
   }
 
   render () {
     return (
       <Content>
-        {this.puntajes ()}
+        {this.props.respuesta != null
+          ? this.props.respuesta.map ((e, i) => (
+              <List key={i}>
+                <ListItem itemDivider>
+                  <Left>
+                    <Text style={{fontSize: 18}}>{e.nombre}</Text>
+                  </Left>
+                  <Right>
+                    <Text style={{fontSize: 20}}>
+                      {e.puntaje}%
+                    </Text>
+                  </Right>
+                </ListItem>
+                {e.grupoxpersonas.map ((ee, ii) => (
+                  <ListItem key={ii}>
+                    <Text>{ee.persona.nombres} {ee.persona.apellidos}</Text>
+                  </ListItem>
+                ))}
+              </List>
+            ))
+          : <Text>Cargando...</Text>}
       </Content>
     );
   }
@@ -66,6 +64,8 @@ const mapDispatchToProps = dispatch => {
   return {
     obtener_puntajes: id_categoria =>
       dispatch (obtener_puntajes (id_categoria)),
+    resp: () =>
+      dispatch (respuesta (null)),
   };
 };
 

@@ -1,125 +1,173 @@
-import React, { Component } from "react";
-import {Body, Button, Header, Icon, Right, Title, Text, Left} from "native-base";
+import React, {Component} from 'react';
+import {
+  Body,
+  Button,
+  Header,
+  Icon,
+  Right,
+  Title,
+  Text,
+  Left,
+} from 'native-base';
 import {connect} from 'react-redux';
-import { IconFill, IconOutline } from "@ant-design/icons-react-native";
+import {IconFill, IconOutline} from '@ant-design/icons-react-native';
 import NavigationService from './../../services/NavigationService';
-import { DrawerActions } from 'react-navigation-drawer';
+import {DrawerActions} from 'react-navigation-drawer';
 
-import { getToken, removerToken } from '../../redux/actions/login';
+import {getToken, removerToken} from '../../redux/actions/login';
 
-class MainHeader extends Component{
+class MainHeader extends Component {
+  constructor (props) {
+    super (props);
+    this.state = {
+      token: null,
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            token: null
-        }
-    }
+  componentDidMount () {
+    this._bootstrapSync ();
+  }
 
-    componentDidMount(){
-        this._bootstrapSync();
-    }
+  _bootstrapSync () {
+    this.props.consultarToken ();
+  }
 
-    _bootstrapSync() {
-        this.props.consultarToken();
-    }
+  async salir () {
+    await this.props.salir ();
+    this.props.Navigate.navigate('Home');
+  }
 
-    async salir(){
-        await this.props.salir();
-        this.props.Navigate.navigate("Home");
-    }
+  header () {
 
-    render(){
+      if (this.props.transparent != 'true' || this.props.transparent == null) {
+        return (
+          <Header
+            transparent
+            androidStatusBarColor="#127871"
+            iosBarStyle="light-content"
+          >
 
-        if(this.props.transparent != "true" || this.props.transparent == null){
-            return(
+            {this.props.token != null || this.props.token != undefined
+              ? <Left>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.openDrawer ()}
+                  >
+                    <IconOutline
+                      name="menu"
+                      size={20}
+                      style={{color: '#ffffff'}}
+                    />
+                  </Button>
+                </Left>
+              : <Text />}
 
-                <Header transparent
-                        androidStatusBarColor="#127871"
-                        iosBarStyle="light-content">
+            <Body>
+              <Title />
+            </Body>
 
-                    {this.props.token != null || this.props.token != undefined ? <Left>
-                        <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <IconOutline name="menu" size={20} style={{ color: "#ffffff" }}/>
-                        </Button>
-                    </Left> : <Text></Text>}
+            {this.props.token == null || this.props.token == undefined
+              ? <Right>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.navigate ('Login')}
+                  >
+                    <IconOutline
+                      name="login"
+                      size={20}
+                      style={{color: '#ffffff'}}
+                    />
+                  </Button>
+                </Right>
+              : <Right>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.navigate ('Profile')}
+                  >
+                    <Icon name="person" style={{color: '#ffffff'}} />
+                  </Button>
+                  <Button transparent onPress={() => this.props.salir ()}>
+                    <Icon name="power" style={{color: '#ffffff'}} />
+                  </Button>
+                </Right>}
 
-                    <Body>
-                    <Title></Title>
-                    </Body>
+          </Header>
+        );
+      } else {
+        return (
+          <Header
+            androidStatusBarColor="#1B687F"
+            iosBarStyle="light-content"
+            transparent
+          >
 
-                        {this.props.token == null || this.props.token == undefined ?
-                            <Right>
-                                <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
-                                    <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
-                                </Button>
-                            </Right>
-                            :
-                            <Right>
-                                <Button transparent onPress={() => this.props.Navigate.navigate("Profile")}>
-                                    <Icon name="person" style={{ color: "#ffffff" }}/>
-                                </Button>
-                                <Button transparent onPress={() => this.props.salir()}>
-                                    <Icon name="power" style={{ color: "#ffffff" }}/>
-                                </Button>
-                            </Right>
+            {this.props.token != null || this.props.token != undefined
+              ? <Left>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.openDrawer ()}
+                  >
+                    <IconOutline
+                      size={20}
+                      name="menu"
+                      style={{color: '#ffffff'}}
+                    />
+                  </Button>
+                </Left>
+              : <Text />}
 
-                        }
+            <Body>
+              <Title />
+            </Body>
+            {this.props.token == null || this.props.token == undefined
+              ? <Right>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.navigate ('Profile')}
+                  >
+                    <IconOutline
+                      name="login"
+                      size={20}
+                      style={{color: '#ffffff'}}
+                    />
+                  </Button>
+                </Right>
+              : <Right>
+                  <Button
+                    transparent
+                    onPress={() => this.props.Navigate.navigate ('Login')}
+                  >
+                    <Icon name="person" style={{color: '#ffffff'}} />
+                  </Button>
+                  <Button transparent onPress={() => this.props.salir ()}>
+                    <Icon name="power" style={{color: '#ffffff'}} />
+                  </Button>
+                </Right>}
+          </Header>
+        );
+      }
+  }
 
-                </Header>
-            )
-        }else{
-            return(
-
-                <Header androidStatusBarColor="#1B687F"
-                        iosBarStyle="light-content" transparent>
-
-                    {this.props.token != null || this.props.token != undefined ? <Left>
-                        <Button transparent onPress={() => this.props.Navigate.openDrawer()}>
-                            <IconOutline size={20} name="menu" style={{ color: "#ffffff" }}  />
-                        </Button>
-                    </Left> : <Text></Text>}
-
-                    <Body>
-                    <Title></Title>
-                    </Body>
-                    {this.props.token == null || this.props.token == undefined ?
-                        <Right>
-                            <Button transparent onPress={() => this.props.Navigate.navigate("Profile")}>
-                                <IconOutline name="login" size={20} style={{ color: "#ffffff" }}  />
-                            </Button>
-                        </Right>
-                        :
-                        <Right>
-                            <Button transparent onPress={() => this.props.Navigate.navigate("Login")}>
-                                <Icon name="person" style={{ color: "#ffffff" }}/>
-                            </Button>
-                            <Button transparent onPress={() => this.props.salir()}>
-                                <Icon name="power" style={{ color: "#ffffff" }}/>
-                            </Button>
-                        </Right>
-
-                    }
-                </Header>
-            )
-        }
-
-    }
-
+  render () {
+    return (
+      <>
+        {this.header ()}
+      </>
+    );
+  }
 }
 
 const mapStateProps = state => {
-    return {
-        token: state.login.token
-    }
-}
+  return {
+    token: state.login.token,
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        consultarToken : () => dispatch(getToken()),
-        salir : () => dispatch(removerToken()),
-    }
-}
+  return {
+    consultarToken: () => dispatch (getToken ()),
+    salir: () => dispatch (removerToken ()),
+  };
+};
 
-
-export default connect(mapStateProps, mapDispatchToProps)(MainHeader);
+export default connect (mapStateProps, mapDispatchToProps) (MainHeader);

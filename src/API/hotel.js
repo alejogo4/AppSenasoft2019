@@ -13,6 +13,6 @@ export const APIhoteles = async () => {
         }
     };
 
-    return fetch(`${URL}/asignacion/hotel/${user.persona.id}`, request)
+    return await fetch(`${URL}/asignacion/hotel/${user.persona.id}`, request)
         .then(response => response.json());
 }

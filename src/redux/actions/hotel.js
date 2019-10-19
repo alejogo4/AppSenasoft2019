@@ -21,7 +21,9 @@ export const obtener_hotel = () => dispatch => {
         if (respuesta.ok) {
             dispatch(respuesta(respuesta.data));
         } else {
-            dispatch(error(respuesta.datos));
+            dispatch(error(respuesta.data));
         }
+    }).catch(r=>{
+        console.log(e)
     });
 }

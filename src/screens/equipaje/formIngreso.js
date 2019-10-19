@@ -123,8 +123,8 @@ class FormIngreso extends Component {
                 </Body>
                 :
                 <Row>
-                  <Col style={{height: 200, alignItems:"center", alignContent:"center"}}>
-                    <Text style={{fontSize:24}}>{this.state.codigo}</Text>
+                  <Col style={{height: 150, alignItems:"center", justifyContent:"center"}}>
+                    <Text style={{fontSize:60, color: '#015d7c'}}>{this.state.codigo}</Text>
                   </Col>
                 </Row>
                 }
