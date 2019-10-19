@@ -60,13 +60,13 @@ class Equipaje extends Component {
     this.props.contarEquipaje();
   }
 
-  componentWillReceiveProps() {
-    setTimeout(() => {
-      if (this.props.respuestaEquipaje != null && this.props.respuestaEquipaje.data == null) {
-        this.setState({cedula: ''});
-      }
-    }, 1);
-  }
+  // componentWillReceiveProps() {
+  //   setTimeout(() => {
+  //     if (this.props.respuestaEquipaje != null && this.props.respuestaEquipaje.data == null) {
+  //       this.setState({cedula: ''});
+  //     }
+  //   }, 1);
+  // }
 
   onQR_Code_Scan_Done = QR_Code => {
     this.setState({cedula: QR_Code});

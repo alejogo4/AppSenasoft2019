@@ -29,6 +29,7 @@ class FormIngreso extends Component {
       documento: '',
       cantidad: 0,
       descripcion: '',
+      codigo: 0
     };
   }
 
@@ -43,6 +44,9 @@ class FormIngreso extends Component {
         setTimeout(() => {
           if (this.props.respuestaEquipaje != null) {
             if (this.props.respuestaEquipaje.ok) {
+              this.setState({
+                codigo: this.props.respuestaEquipaje.data.id
+              });
               Toast.show({
                 text: this.props.respuestaEquipaje.message,
                 buttonText: 'Ok',
@@ -85,6 +89,7 @@ class FormIngreso extends Component {
                 </H3>
               </CardItem>
               <CardItem bordered>
+                { this.state.codigo == 0 ?
                 <Body>
                   <Form style={{alignSelf: 'stretch'}}>
                     <ScrollView>
@@ -116,6 +121,13 @@ class FormIngreso extends Component {
                     </Col>
                   </Row>
                 </Body>
+                :
+                <Row>
+                  <Col style={{height: 200, alignItems:"center", alignContent:"center"}}>
+                    <Text style={{fontSize:24}}>{this.state.codigo}</Text>
+                  </Col>
+                </Row>
+                }
               </CardItem>
             </Card>
           </KeyboardAvoidingView>

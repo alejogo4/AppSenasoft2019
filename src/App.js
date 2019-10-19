@@ -6,8 +6,6 @@ import NavigationService from './services/NavigationService';
 // import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { createDrawerNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 
-
-
 import Home from "./screens/home/";
 import SideBar from "./screens/sidebar";
 import Login from "./screens/login";
@@ -16,8 +14,8 @@ import Profile from './screens/profile';
 import Refrigerios from './screens/refrigerios';
 import Equipaje from './screens/equipaje';
 import Informacion from './screens/information';
+import HotelTransporte from './screens/hoteltransporte';
 //Importaciones propias
-
 
 
 const Drawer = createDrawerNavigator(
@@ -28,8 +26,7 @@ const Drawer = createDrawerNavigator(
         Profile:{screen:Profile},
         Refrigerios:{screen:Refrigerios},
         Informacion:{screen:Informacion},
-        Asistencia : {screen:Home},
-        HotelTransporte: {screen:Home}
+        HotelTransporte: {screen:HotelTransporte}
     },
     {
         gesturesEnabled: true,
@@ -49,8 +46,7 @@ const AppNavigator = createStackNavigator(
         Profile:{screen:Profile},
         Refrigerios:{screen:Refrigerios},
         Informacion:{screen:Informacion},
-        Asistencia : {screen:Home},
-        HotelTransporte: {screen:Home}
+        HotelTransporte: {screen:HotelTransporte}
     },
     {
         initialRouteName: "Drawer",

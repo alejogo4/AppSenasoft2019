@@ -1,10 +1,7 @@
-
-
 import {
     sendRefrigerio
 } from "../../API/refrigerio";
 import {Toast} from "native-base";
-
 
 
 export const GET_RESP = "GET_RESP";

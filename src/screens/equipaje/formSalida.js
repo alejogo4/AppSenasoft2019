@@ -81,9 +81,10 @@ class formSalida extends Component {
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Cantidad de elementos:  {this.state.cantidad == null ? '': this.state.cantidad} </Text>
-                <Text>Descripción:  {this.state.descripcion == null ? '': this.state.descripcion} </Text>
-                <Text>Fecha de ingreso:  {this.state.fecha_ingreso == null ? '': this.state.fecha_ingreso} </Text>
+                <Text style={{fontSize:20}}>Código:  {this.state.id == null ? '': this.state.id} </Text>
+                <Text style={{fontSize:18}}>Cantidad de elementos:  {this.state.cantidad == null ? '': this.state.cantidad} </Text>
+                <Text style={{fontSize:18}}>Descripción:  {this.state.descripcion == null ? '': this.state.descripcion} </Text>
+                <Text style={{fontSize:18}}>Fecha de ingreso:  {this.state.fecha_ingreso == null ? '': this.state.fecha_ingreso} </Text>
               </Body>
             </CardItem>
           </Card>

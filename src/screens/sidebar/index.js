@@ -17,12 +17,12 @@ import styles from './style';
 import {getUser} from '../../redux/actions/login';
 import {connect} from 'react-redux';
 
-const drawerCover = require('../../../assets/drawer-cover.png');
-const drawerImage = require('../../../assets/logo-kitchen-sink.png');
+const drawerCover = require ('../../../assets/drawer-cover.png');
+const drawerImage = require ('../../../assets/logo-kitchen-sink.png');
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
     this.state = {
       shadowOffsetWidth: 1,
       shadowRadius: 4,
@@ -30,87 +30,69 @@ class SideBar extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.consultarUsuario().then(e => {
-      let menu = [
-        {
-          name: 'Inicio',
-          route: 'Home',
-          icon: 'home',
-          bg: '#48525D',
-        },
-        {
-          name: 'Pefil',
-          route: 'Profile',
-          icon: 'people',
-          bg: '#48525D',
-        },
-      ];
-      if (this.props.user.user.rol == 0) {
-        menu.push(
-          {
-            name: 'Refrigerios',
-            route: 'Refrigerios',
-            icon: 'pizza',
-            bg: '#48525D',
-          },
-          {
-            name: 'Equipaje',
-            route: 'Equipaje',
-            icon: 'finger-print',
-            bg: '#48525D',
-          }
-        );
-      }else if (this.props.user.user.rol == 1){
-        menu.push(
-          {
-            name: 'Confirmar asistencia',
-            route: 'Asistencia',
-            icon: 'calendar',
-            bg: '#48525D',
-          },
-          {
-            name: 'Hotel y trasporte',
-            route: 'HotelTransporte',
-            icon: 'bed',
-            bg: '#48525D',
-          }
-        );
-      }else if (this.props.user.user.rol == 2){
-        menu.push(
-          {
-            name: 'Hotel y trasporte',
-            route: 'HotelTransporte',
-            icon: 'bed',
-            bg: '#48525D',
-          }
-        );
-      }else if (this.props.user.user.rol == 3){
-        menu.push(
-          {
-            name: 'Refrigerios',
-            route: 'Refrigerios',
-            icon: 'pizza',
-            bg: '#48525D',
-          },
-        );
-      }else if (this.props.user.user.rol == 4){
-        menu.push(
-          {
-            name: 'Equipaje',
-            route: 'Equipaje',
-            icon: 'finger-print',
-            bg: '#48525D',
-          }
-        );
-      }
-
-      this.setState({menu})
-    });
-
+  componentDidMount () {
+    this.props.consultarUsuario ();
   }
 
-  render() {
+  render () {
+    let menu = [
+      {
+        name: 'Inicio',
+        route: 'Home',
+        icon: 'home',
+        bg: '#48525D',
+      },
+      {
+        name: 'Pefil',
+        route: 'Profile',
+        icon: 'people',
+        bg: '#48525D',
+      },
+    ];
+
+    if (this.props.user != null) {
+      if (this.props.user.user.rol == 0) {
+        menu.push (
+          {
+            name: 'Refrigerios',
+            route: 'Refrigerios',
+            icon: 'pizza',
+            bg: '#48525D',
+          },
+          {
+            name: 'Equipaje',
+            route: 'Equipaje',
+            icon: 'finger-print',
+            bg: '#48525D',
+          }
+        );
+      } else if (
+        this.props.user.user.rol == 2 ||
+        this.props.user.user.rol == 1
+      ) {
+        menu.push ({
+          name: 'Hotel y trasporte',
+          route: 'HotelTransporte',
+          icon: 'car',
+          bg: '#48525D',
+        });
+      } else if (this.props.user.user.rol == 3) {
+        menu.push ({
+          name: 'Refrigerios',
+          route: 'Refrigerios',
+          icon: 'pizza',
+          bg: '#48525D',
+        });
+      } else if (this.props.user.user.rol == 4) {
+        menu.push ({
+          name: 'Equipaje',
+          route: 'Equipaje',
+          icon: 'finger-print',
+          bg: '#48525D',
+        });
+      }
+    }
+
     return (
       <Container>
         <Content
@@ -120,12 +102,12 @@ class SideBar extends Component {
           <Image source={drawerCover} style={styles.drawerCover} />
 
           <List
-            dataArray={this.state.menu || []}
-            renderRow={data =>
+            dataArray={menu || []}
+            renderRow={data => (
               <ListItem
                 button
                 noBorder
-                onPress={() => this.props.navigation.navigate(data.route)}
+                onPress={() => this.props.navigation.navigate (data.route)}
               >
                 <Left>
                   <Icon
@@ -152,7 +134,8 @@ class SideBar extends Component {
                       >{`${data.types} Types`}</Text>
                     </Badge>
                   </Right>}
-              </ListItem>}
+              </ListItem>
+            )}
           />
         </Content>
       </Container>
@@ -168,8 +151,8 @@ const mapStateProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    consultarUsuario: () => dispatch(getUser()),
+    consultarUsuario: () => dispatch (getUser ()),
   };
 };
 
-export default connect(mapStateProps, mapDispatchToProps)(SideBar);
+export default connect (mapStateProps, mapDispatchToProps) (SideBar);
