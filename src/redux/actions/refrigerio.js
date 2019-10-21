@@ -20,7 +20,6 @@ export const error = error => ({
 export const validarRefrigerio = data => dispatch => {
     return sendRefrigerio(data).then(respuesta => {
 
-        console.log(respuesta);
         if (respuesta.ok) {
             Toast.show({
                 text: respuesta.data,

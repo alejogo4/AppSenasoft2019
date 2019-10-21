@@ -12,6 +12,6 @@ export const APIprojects = async () => {
         }
     };
 
-    return fetch(`${URL}/proyectos`, request)
+    return await fetch(`${URL}/proyectos`, request)
         .then(response => response.json());
 }

@@ -12,7 +12,7 @@ export const contarEquipaje = async () => {
         }
     };
 
-    return fetch(`${URL}/equipaje/cantidad`, request)
+    return await fetch(`${URL}/equipaje/cantidad`, request)
         .then(response => response.json());
 }
 
@@ -28,7 +28,7 @@ export const ingresarEquipaje = async data => {
             'Content-Type': 'application/json'
         }
     };
-    return fetch(`${URL}/equipaje/ingreso`, request)
+    return await fetch(`${URL}/equipaje/ingreso`, request)
         .then(response => response.json());
 }
 
@@ -45,6 +45,6 @@ export const salidaEquipaje = async data => {
         }
     };
 
-    return fetch(`${URL}/equipaje/salida`, request)
+    return await fetch(`${URL}/equipaje/salida`, request)
         .then(response => response.json());
 }

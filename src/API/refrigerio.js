@@ -12,6 +12,6 @@ export const sendRefrigerio = async data => {
         }
     };
 
-    return fetch(`${URL}/registrosRefrigerio`, request)
+    return await fetch(`${URL}/registrosRefrigerio`, request)
         .then(response => response.json());
 }
