@@ -17,11 +17,12 @@ export const error = error => ({
 
 export const obtener_hotel = () => dispatch => {
 
-    return APIhoteles().then(respuesta => {
-        if (respuesta.ok) {
-            dispatch(respuesta(respuesta.data));
+    return APIhoteles().then(resp => {
+        
+        if (resp.ok) {
+            dispatch(respuesta(resp.data));
         } else {
-            dispatch(error(respuesta.data));
+            dispatch(error(resp.data));
         }
     }).catch(r=>{
         console.log(e)

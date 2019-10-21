@@ -5,7 +5,6 @@ export const tabs = (stateTabs) => ({
     stateTabs,
 });
 
-
 export const changeTab = data => dispatch =>{
     dispatch(tabs(data));
 }

@@ -43,7 +43,7 @@ class SideBar extends Component {
         bg: '#48525D',
       },
       {
-        name: 'Pefil',
+        name: 'Perfil',
         route: 'Profile',
         icon: 'people',
         bg: '#48525D',

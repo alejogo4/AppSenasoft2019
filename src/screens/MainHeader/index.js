@@ -33,9 +33,10 @@ class MainHeader extends Component {
     this.props.consultarToken ();
   }
 
-  async salir () {
-    await this.props.salir ();
-    this.props.Navigate.navigate('Home');
+  salir () {
+    this.props.salir ();
+    this.props.navigation.navigate("Home");
+    // this.props.Navigate.navigate('Home');
   }
 
   header () {

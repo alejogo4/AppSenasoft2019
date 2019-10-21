@@ -1,9 +1,11 @@
-import { URL, USER } from './URL';
+import { URL, USER, TOKEN } from './URL';
 
 export const APIhoteles = async () => {
 
-    const user = await JSON.parse(USER());
+    const user = await USER();
     const token = await TOKEN();
+
+    let usuario = JSON.parse(user);
 
     let request = {
         method: 'GET',
@@ -13,6 +15,6 @@ export const APIhoteles = async () => {
         }
     };
 
-    return await fetch(`${URL}/asignacion/hotel/${user.persona.id}`, request)
+    return await fetch(`${URL}/asignacion/hotel/${usuario.persona.id}`, request)
         .then(response => response.json());
 }

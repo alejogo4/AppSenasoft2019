@@ -15,6 +15,7 @@ import Refrigerios from './screens/refrigerios';
 import Equipaje from './screens/equipaje';
 import Informacion from './screens/information';
 import HotelTransporte from './screens/hoteltransporte';
+import MainHeader from './screens/MainHeader';
 //Importaciones propias
 
 
@@ -41,12 +42,14 @@ const Drawer = createDrawerNavigator(
 const AppNavigator = createStackNavigator(
     {
         Drawer: { screen: Drawer },
+        Home: { screen: Home },
         Login:{screen:Login},
         Proyecto:{screen:Proyecto},
         Profile:{screen:Profile},
         Refrigerios:{screen:Refrigerios},
         Informacion:{screen:Informacion},
-        HotelTransporte: {screen:HotelTransporte}
+        HotelTransporte: {screen:HotelTransporte},
+        MainHeader: {screen: MainHeader}
     },
     {
         initialRouteName: "Drawer",

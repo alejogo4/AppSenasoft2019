@@ -84,9 +84,12 @@ const guardarDatosUsuario = (data) => dispatch => {
 
 export const removerToken = () => dispatch => {
     return AsyncStorage.removeItem('token')
-        .then((data) => {
+        .then(async (data) => {
+            await AsyncStorage.removeItem('user');
             dispatch(token(null));
+            dispatch(user(null));
             dispatch(loading(false));
+            NavigationService.navigate('Home');
         })
         .catch((err) => {
             dispatch(loading(false));

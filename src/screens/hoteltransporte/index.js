@@ -37,15 +37,16 @@ class HotelTransporte extends Component {
     };
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this._consultaUser ();
   }
 
   _consultaUser () {
-    this.props.obtener_hotel ();
+    this.props.obtenerhotel ();
   }
 
   render () {
+    console.log(this.props.respuesta)
     return (
       <Container style={styles.container}>
         <Content>
@@ -181,7 +182,7 @@ const mapStateProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    obtener_hotel: () => dispatch (obtener_hotel()),
+    obtenerhotel: () => dispatch (obtener_hotel()),
   };
 };
 

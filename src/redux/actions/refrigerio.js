@@ -18,25 +18,25 @@ export const error = error => ({
 });
 
 export const validarRefrigerio = data => dispatch => {
-    return sendRefrigerio(data).then(respuesta => {
+    return sendRefrigerio(data).then(resp => {
 
-        if (respuesta.ok) {
+        if (resp.ok) {
             Toast.show({
-                text: respuesta.data,
+                text: resp.data,
                 buttonText: "Ok",
                 type: "success",
                 duration: 5000
             });
-            dispatch(respuesta(respuesta.data));
+            dispatch(respuesta(resp.data));
 
         } else {
             Toast.show({
-                text: respuesta.data,
+                text: resp.data,
                 buttonText: "Ok",
                 type: "danger",
                 duration: 5000
             });
-            dispatch(error(respuesta.datos));
+            dispatch(error(resp.datos));
         }
     });
 }
