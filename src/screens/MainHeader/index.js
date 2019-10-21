@@ -8,6 +8,7 @@ import {
   Title,
   Text,
   Left,
+  View
 } from 'native-base';
 import {connect} from 'react-redux';
 import {IconFill, IconOutline} from '@ant-design/icons-react-native';
@@ -150,9 +151,9 @@ class MainHeader extends Component {
 
   render () {
     return (
-      <>
+      <View>
         {this.header ()}
-      </>
+      </View>
     );
   }
 }
