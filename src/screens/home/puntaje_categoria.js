@@ -41,8 +41,10 @@ class PuntajeCategoria extends Component {
                   </Right>
                 </ListItem>
                 {e.grupoxpersonas.map ((ee, ii) => (
-                  <ListItem key={ii}>
-                    <Text>{ee.persona.nombres} {ee.persona.apellidos}</Text>
+                  <ListItem key={ii} style={{flexDirection:'column'}}>
+                    <Text style={{flex:1, textAlign: 'center'}}>{ee.persona.nombres} {ee.persona.apellidos} </Text>
+                    <Text style={{flex:1, textAlign: 'center', fontSize:9}}>{ee.persona.centro.regional.nombre_regional} </Text>
+                    <Text style={{flex:1, textAlign: 'center', fontSize:9}}>{ee.persona.centro.nombre_centro} </Text>
                   </ListItem>
                 ))}
               </List>
